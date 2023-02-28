@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+<html lang="ru">
+{% load static %}
+    <head>
+        {% include "base/head.html" %}
+        {% block extra_css %} {% endblock %}
+        <title>{{ pagename }}</title>
+    </head>
+
+    <body>
+        {# Возможно, если будут страницы с другим дизайном (например админ. панель), то следует использовать block #}
+        {% include "base/header.html" %}
+        <main>
+            {% block content %} {% endblock %}
+        </main>
+        {% include "base/footer.html" %}
+
+        {% block extra_js %} {% endblock %}
+    </body>
+
+</html>

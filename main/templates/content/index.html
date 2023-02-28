@@ -1,0 +1,17 @@
+{% extends 'base/base.html' %}
+
+{% block extra_css %}
+<link rel="stylesheet" href="static/css/test.css">
+{% endblock %}
+
+{% block content %}
+<div class="jumbotron text-center">
+      <h1 class="display-4">Welcome to SimpleVoting</h1>
+      <p class="lead">This is a simple landing page with a simple text and simple choice,<br>like our votings .)</p>
+      <form>
+        <a href="/registration" class="btn btn-primary btn-lg mr-2">Sign Up</a>
+        <a href="/login" class="btn btn-primary btn-lg">Log In</a>
+      </form>
+</div>
+
+{% endblock %}
