@@ -2,6 +2,6 @@ from django.shortcuts import render
 from main.views.common import get_context
 
 
-def profile_page(request):
+def error404_page(request):
     context = get_context(request)
-    return render(request, "profile.html", context)
+    return render(request, "error404.html", context)
