@@ -94,3 +94,4 @@ If you have run out of energy or time for your project, put a note at the top of
 ##Figma prototypes links
 Profile and Edit profile - https://www.figma.com/file/zH039VtpANMQ3oKylQZ7ye/Untitled?node-id=0%3A1&t=QMEKzpEPN2jpjFbZ-1
 Error 404 - https://www.figma.com/file/zH039VtpANMQ3oKylQZ7ye/Untitled?node-id=0%3A1&t=QMEKzpEPN2jpjFbZ-1
+Forum and all about it https://www.figma.com/file/6gwIRD8hv24ElbL2BOMXzT/minecraft-%D1%84%D0%BE%D1%80%D1%83%D0%BC?node-id=0%3A1&t=9n1g13xCqh0EcsoX-1
