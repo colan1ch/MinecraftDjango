@@ -90,3 +90,7 @@ For open source projects, say how it is licensed.
 
 ## Project status
 If you have run out of energy or time for your project, put a note at the top of the README saying that development has slowed down or stopped completely. Someone may choose to fork your project or volunteer to step in as a maintainer or owner, allowing your project to keep going. You can also make an explicit request for maintainers.
+
+##Figma prototypes links
+Profile and Edit profile - https://www.figma.com/file/zH039VtpANMQ3oKylQZ7ye/Untitled?node-id=0%3A1&t=QMEKzpEPN2jpjFbZ-1
+Error 404 - https://www.figma.com/file/zH039VtpANMQ3oKylQZ7ye/Untitled?node-id=0%3A1&t=QMEKzpEPN2jpjFbZ-1
