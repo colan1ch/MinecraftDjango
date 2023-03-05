@@ -2,6 +2,10 @@ from django.shortcuts import render
 from main.views.common import get_context
 
 
-def authorization_page(request):
+def login_page(request):
     context = get_context(request)
     return render(request, "authorization.html", context)
+
+def registration_page(request):
+    context = get_context(request)
+    return render(request, "registration.html", context)
