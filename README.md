@@ -4,7 +4,7 @@
 - [Страница 404](https://www.figma.com/file/zH039VtpANMQ3oKylQZ7ye/Untitled?node-id=0%3A1&t=QMEKzpEPN2jpjFbZ-1)
 - [Профиль](https://www.figma.com/file/zH039VtpANMQ3oKylQZ7ye/Untitled?node-id=0%3A1&t=QMEKzpEPN2jpjFbZ-1)
 - [Форум](https://www.figma.com/file/6gwIRD8hv24ElbL2BOMXzT/minecraft-%D1%84%D0%BE%D1%80%D1%83%D0%BC?node-id=0%3A1&t=9n1g13xCqh0EcsoX-1)
-
+- [Regestraion](https://www.figma.com/file/ry8KQUJCFgdBQX6aGzuuLq/Untitled?node-id=0%3A1&t=58iKngC3DIVxfRSB-1)
 ## Authors
 
 - Артемюк Илья Ростиславович 
