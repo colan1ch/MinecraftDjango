@@ -2,12 +2,11 @@
 <html lang="ru">
 {% load static %}
 {% load bootstrap5 %}
-
-{# Отображает в django.contrib.messages #}
 {% bootstrap_messages %}
 
     <head>
         {% include "base/head.html" %}
+        <link href='{% static "css/footer.css" %}' rel="stylesheet">
         {% bootstrap_css %}
         {% block extra_css %} {% endblock %}
         <title>{{ pagename }}</title>
