@@ -1,17 +1,467 @@
-{% extends 'base/base.html' %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Landing</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-GLhlTQ8iRABdZLl6O3oVMWSktQOp6b7In1Zl3/Jr59b6EGGoI1aFkw7cmDA6j6gD" crossorigin="anonymous">
+    <style>
+        .background-parallax{
+              height: 100%;
+              background-attachment: fixed;
+              background-position: center;
+              background-size: cover;
+              background-repeat: no-repeat;
+        }
+        .main-background{
+            background-image: url('/static/img/landing/background_sky.png');
+        }
+        body{
+            margin:0;
+        }
+        *{
+            font-family: Candara;
+        }
+        nav{
+            background: rgba(41, 43, 44, 0);
+            display:flex;
+            justify-content: space-between;
+        }
+        .footer-basic {
+          padding:30px 0;
+          background-color:#ffffff;
+          color:#4b4c4d;
+          font-size:20px;
+        }
 
-{% block extra_css %}
-<link rel="stylesheet" href="static/css/test.css">
-{% endblock %}
+        .footer-basic ul {
+          padding:0;
+          list-style:none;
+          text-align:center;
+          font-size:18px;
+          line-height:1.6;
+          margin-bottom:0;
+        }
 
-{% block content %}
-<div class="jumbotron text-center">
-      <h1 class="display-4">Welcome to SimpleVoting</h1>
-      <p class="lead">This is a simple landing page with a simple text and simple choice,<br>like our votings .)</p>
-      <form>
-        <a href="/registration" class="btn btn-primary btn-lg mr-2">Sign Up</a>
-        <a href="/login" class="btn btn-primary btn-lg">Log In</a>
-      </form>
-</div>
+        .footer-basic li {
+          padding:0 10px;
+        }
 
-{% endblock %}
+        .footer-basic ul a {
+          color:inherit;
+          text-decoration:none;
+          opacity:0.8;
+        }
+
+        .footer-basic ul a:hover {
+          opacity:1;
+        }
+
+        .footer-basic  {
+          text-align:center;
+          padding-bottom:25px;
+        }
+
+        .footer-basic > a {
+          font-size:24px;
+          width:40px;
+          height:40px;
+          line-height:40px;
+          display:inline-block;
+          text-align:center;
+          border-radius:50%;
+          border:1px solid #ccc;
+          margin:0 8px;
+          color:inherit;
+          opacity:0.75;
+        }
+
+        .footer-basic .social > a:hover {
+          opacity:0.9;
+        }
+
+        .footer-basic .copyright {
+          margin-top:15px;
+          text-align:center;
+          font-size:13px;
+          color:#aaa;
+          margin-bottom:0;
+        }
+        .wrapper {
+          height: 100vh;
+          display:flex;
+          flex-direction: column;
+          padding-top:250px;
+        }
+        .test{
+            background: rgba(41, 43, 44, 1);
+            width:100%;
+            height:1000px;
+            flex-direction: column;
+            align-items:center;
+
+        }
+        .main{
+            display:flex;
+        }
+        .main-text{
+            font-size:60px;
+            padding-left:5px;
+            padding-right:5px;
+            background:rgba(41, 43, 44, 0.4);
+            text-align:center;
+        }
+        .dop{
+            font-size:32px;
+        }
+        .btn{
+            margin:10px;
+        }
+        .btn-outline-warning:hover{
+            color:white;
+        }
+
+        .btn-warning{
+            color:rgb(41, 43, 44);
+        }
+
+        .rate{
+            display:flex;
+            width: 350px;
+            height:500px;
+            margin:100px;
+            background-image:url('');
+            background:rgba(159, 213, 255, 0.3);
+            box-shadow: 15px 16px rgb(2, 117, 255);
+            flex-direction:column;
+            position:relative;
+            opacity:0;
+        }
+
+
+        .rate-1{
+            left:-1000px;
+        }
+
+        .rate-2{
+            bottom:-400px;
+        }
+
+        .rate-3{
+            left:1000px;
+        }
+
+
+        .rate-top-anim{
+            transition:0.7s;
+            top:-15px;
+        }
+
+        .rate-anim{
+            transition:1.5s;
+            opacity:1;
+            left:0;
+            bottom:0;
+        }
+
+        .rates{
+            display:flex;
+            flex-direction:row;
+            justify-content:space-between;
+        }
+
+        .rates-title{
+            color:white;
+            background:rgba(159, 213, 255,0.3);
+            margin-top:20px;
+        }
+
+        .article_sd{
+            background-image: url('/static/img/landing/background_ocean.png');
+        }
+
+        .title-rate{
+            color:white;
+            font-size:35px;
+            text-align:center;
+            padding:7px;
+        }
+
+        .description{
+            color:white;
+            font-size:20px;
+            text-align:center;
+            padding:7px;
+        }
+        .navbar{
+            transition:0.5s;
+        }
+
+        .rate-button{
+            margin-top:50px;
+        }
+
+        .rate3{
+            box-shadow: -15px -16px rgb(2, 117, 255);
+        }
+
+        .rate2{
+            box-shadow: 15px 16px rgb(2, 117, 255), -15px -16px rgb(2, 117, 255);
+        }
+
+        .btn{
+            transition:0.4s;
+        }
+
+        .head{
+            background-color: rgba(0, 0, 0,0);
+            font-size:32px;
+        }
+
+        .header-anim{
+            background-color: rgba(36,106,205,0.5);
+        }
+
+        .visit{
+            position:relative;
+            display:flex;
+            justify-content:space-between;
+            background:rgba(41, 43, 44,1);
+            height:700px;
+            top:-200px;
+        }
+
+        .about-us-title{
+            text-align:center;
+            font-size:150px;
+            position:relative;
+            top:-200px;
+        }
+
+        .about-us{
+            display:flex;
+            flex-direction:column;
+            justify-content:space-between;
+            height:1150px;
+        }
+
+        .map{
+            margin-left:50px;
+            margin-top:85px;
+        }
+
+        #toTop {
+            width:100px;
+            border:1px solid #ccc;
+            background:#f7f7f7;
+            text-align:center;
+            padding:5px;
+            position:fixed;
+            bottom:10px; /* отступ кнопки от нижнего края страницы*/
+            right:10px;
+            cursor:pointer;
+            display:none;
+            color:#333;
+            font-family:verdana;
+            font-size:11px;
+            z-index: 999999;
+        }
+
+        .main-bg-color{
+            background: rgba(36,106,205,0.8);
+        }
+
+        .logo{
+            margin-bottom:23px;
+        }
+
+        .btn-info{
+            color:white;
+        }
+
+        .btn-info:hover{
+            color:white;
+        }
+        .clouds{
+            position:absolute;
+            width:120px;
+            height:80px;
+        }
+        .cloud-1{
+            left:-25px;
+            top:-25px;
+            transform:rotate(-35deg);
+        }
+        .cloud-2{
+            left:300px;
+            top:-25px;
+            transform:rotate(35deg);
+        }
+        .cloud-3{
+            left:-45px;
+            top:450px;
+            transform:rotate(-145deg);
+        }
+        .cloud-4{
+            left:280px;
+            top:435px;
+            transform:rotate(145deg);
+        }
+
+        .bg-footer{
+            background-image: url('/static/img/landing/footer.svg');
+        }
+
+        #navbarNav{
+            margin-left:450px;
+        }
+     </style>
+</head>
+<body class="main-bg-color" id="body">
+    <div ID = "toTop" >To the clouds ↑ </div>
+    <div class="background-parallax main-background">
+        <nav class="navbar navbar-expand-lg fixed-top head" id ="header">
+          <div class="container-fluid">
+            <a class="navbar-brand text-info" href="#">
+                 <img src="/static/img/landing/logotypor.png" width="70" height="60.86" class="logo" alt=""> <span class="text-primary">Mine</span>Cloud
+            </a>
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+              <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarNav">
+              <ul class="navbar-nav">
+                <li class="nav-item">
+                  <a class="nav-link text-white" href="#">RATES</a>
+                </li>
+                <li class="nav-item">
+                  <a class="nav-link text-white" href="#">ABOUT US</a>
+                </li>
+                <li class="nav-item">
+                  <a class="nav-link text-white" href="#">FORUM</a>
+                </li>
+                  <li class="nav-item">
+                  <a class="nav-link text-white" href="#">ADVANTAGES</a>
+                </li>
+              </ul>
+            </div>
+              <div class ="authorization">
+                  <btn type="button" class="btn btn-info">SIGN IN</btn>
+                  <btn type="button" class="btn btn-outline-primary">LOG IN</btn>
+              </div>
+          </div>
+        </nav>
+        <div class="wrapper container">
+            <div class="main justify-content-center">
+                <p class="main-text text-white"><span class="text-primary">Mine</span><span class="text-info">Cloud</span> - HOSTING MINECRAFT SERVERS</p>
+            </div>
+            <div class="main justify-content-center">
+                <p class="main-text text-white dop">One of the best hosting for your minecraft server</p>
+            </div>
+            <div class="main justify-content-center">
+                <button type="button" class="btn  btn-lg btn-outline-primary">Sign In</button>
+                <button type="button" class="btn btn-info btn-lg">Make Order</button>
+            </div>
+        </div>
+    </div>
+        <div class ="test main main-bg-color">
+            <p class="main-text rates-title">
+                Tariff plans - our prices are the most profitable of all
+            </p>
+            <div class="rates">
+                <div class ="rate rate-1">
+                    <img src="/static/img/landing/cloud.png" class="clouds cloud-1">
+                    <h3 class = "title-rate">
+                        Et harum
+                    </h3>
+                    <p class="description">
+                        Lorem ipsum dolor sit amet, quia voluptas sit, aspernatur aut odit aut fugit, sed quia consequuntur magni dolores eos, qui ratione voluptatem sequi nesciunt, neque porro quisquam est, ut et voluptates repudiandae sint et molestiae non recusandae.
+
+                        Itaque earum rerum hic tenetur a sapiente delectus, quis nostrum exercitationem ullam corporis...
+
+                    </p>
+                    <button type="button" class ="btn btn-primary btn-lg rate-button">
+                        Learn more
+                    </button>
+                </div>
+                <div class ="rate rate2 rate-2">
+                    <img src="/static/img/landing/cloud.png" class="clouds cloud-2">
+                    <img src="/static/img/landing/cloud.png" class="clouds cloud-3">
+                    <h3 class = "title-rate">
+                        Et harum
+                    </h3>
+                    <p class="description">
+                        Lorem ipsum dolor sit amet, quia voluptas sit, aspernatur aut odit aut fugit, sed quia consequuntur magni dolores eos, qui ratione voluptatem sequi nesciunt, neque porro quisquam est, ut et voluptates repudiandae sint et molestiae non recusandae.
+
+                        Itaque earum rerum hic tenetur a sapiente delectus, quis nostrum exercitationem ullam corporis...
+
+                    </p>
+                    <button type="button" class ="btn btn-primary btn-lg rate-button">
+                        Learn more
+                    </button>
+                </div>
+                <div class ="rate rate3 rate-3">
+                    <img src="/static/img/landing/cloud.png" class="clouds cloud-4">
+                    <h3 class = "title-rate">
+                        Et harum
+                    </h3>
+                    <p class="description">
+                        Lorem ipsum dolor sit amet, quia voluptas sit, aspernatur aut odit aut fugit, sed quia consequuntur magni dolores eos, qui ratione voluptatem sequi nesciunt, neque porro quisquam est, ut et voluptates repudiandae sint et molestiae non recusandae.
+
+                        Itaque earum rerum hic tenetur a sapiente delectus, quis nostrum exercitationem ullam corporis...
+
+                    </p>
+                    <button type="button" class ="btn btn-primary btn-lg rate-button">
+                        Learn more
+                    </button>
+                </div>
+            </div>
+        </div>
+        <div class ="article_sd background-parallax wrapper about-us">
+            <h2 class ="about-us-title text-white main-text main-bg-color">ABOUT US</h2>
+            <div class="visit main-bg-color">
+                <div class="map" style="overflow:hidden;"><iframe src="https://yandex.ru/map-widget/v1/?ll=37.718921%2C55.911714&mode=search&oid=1345374748&ol=biz&utm_source=share&z=17.09" width="560" height="500" frameborder="1" allowfullscreen="true" ></iframe></div>
+            </div>
+        </div>
+        <div class="footer-basic  bg-footer">
+        <footer>
+
+            <ul class="list-inline">
+                <li class="list-inline-item text-white"><a href="#">Rates</a></li>
+                <li class="list-inline-item text-white"><a href="#">About Us</a></li>
+                <li class="list-inline-item text-white"><a href="#">Advantages</a></li>
+            </ul>
+            <p class="copyright text-danger"><span class="text-primary">Mine</span><span class="text-info">Cloud</span>, 2023</p>
+        </footer>
+    </div>
+    <script src="https://cdn.jsdelivr.net/npm/simple-parallax-js@5.0.2/dist/simpleParallax.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.11.6/dist/umd/popper.min.js" integrity="sha384-oBqDVmMz9ATKxIep9tiCxS/Z9fNfEXiDAYTujMAeBAsjFuCZSmKbSSUnQlmh/jp3" crossorigin="anonymous"></script>
+    <script src="https://code.jquery.com/jquery-3.6.4.js" integrity="sha256-a9jBBRygX1Bh5lt8GZjXDzyOB+bWve9EiO7tROUtj/E="  crossorigin="anonymous"></script>
+    <script>
+        'use strict'
+        let header = document.getElementById("header")
+        $(window).on("scroll", function() {
+          $(header).toggleClass("header-anim", $(this).scrollTop() > $(window).height()-800);
+        });
+        let rates = document.getElementsByClassName("rate")
+        $(window).on("scroll", function() {
+          $(rates).toggleClass("rate-anim", $(this).scrollTop() > $(window).height()-700);
+        });
+       $(rates).hover(
+        function(){ $(this).addClass('rate-top-anim'); },
+        function(){ $(this).removeClass('rate-top-anim'); }
+       );
+        $(function() {
+            $(window).scroll(function() {
+                if($(this).scrollTop() != 0) {
+                    $('#toTop').fadeIn();
+                } else {
+                    $('#toTop').fadeOut();
+                }
+            });
+            $('#toTop').click(function() {
+                $('body,html').animate({scrollTop:0},800);
+        });
+      });
+    </script>
+
+</body>
+</html>
