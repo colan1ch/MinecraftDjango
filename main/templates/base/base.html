@@ -6,7 +6,6 @@
 
     <head>
         {% include "base/head.html" %}
-        <link href='{% static "css/footer.css" %}' rel="stylesheet">
         {% bootstrap_css %}
         {% block extra_css %} {% endblock %}
         <title>{{ pagename }}</title>
@@ -23,5 +22,11 @@
         {% bootstrap_javascript %}
         {% block extra_js %} {% endblock %}
     </body>
+
+    <footer>
+        {% include "base/head.html" %}
+        {% bootstrap_css %}
+        <link href='{% static "css/footer.css" %}' rel="stylesheet">
+    </footer>
 
 </html>

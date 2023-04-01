@@ -4,7 +4,7 @@
 }
 
 body {
-    background-color: #000;
+    background-color: #ссс;
 }
 
 header .logo {
@@ -12,5 +12,6 @@ header .logo {
 }
 
 footer {
-    background-img: url();
+    background-color: #343;
 }
+
