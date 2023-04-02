@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html>
+<head>
+ <title>Create Server</title>
+</head>
+<body>
+ <div class="container">
+  <div class="title">Create Server</div>
+  <div class="subscriptions">
+   <div class="subscription">
+    <div class="name">Free</div>
+    <div class="price">$0.00 /month</div>
+    <ul class="features">
+     <li>Unlimited Slots</li>
+     <li>Every day backup</li>
+     <li>512MB RAM</li>
+     <li>Real-time console</li>
+    </ul>
+   </div>
+   <div class="subscription">
+    <div class="name">Budget</div>
+    <div class="price">$1.00 /month</div>
+    <ul class="features">
+     <li>Unlimited Slots</li>
+     <li>Every day backup</li>
+     <li>2GB RAM</li>
+     <li>Real-time console</li>
+    </ul>
+   </div>
+   <div class="subscription">
+    <div class="name">Boost</div>
+    <div class="price">$3.00 /month</div>
+    <ul class="features">
+     <li>Unlimited Slots</li>
+     <li>Every day backup</li>
+     <li>4GB RAM</li>
+     <li>Real-time console</li>
+    </ul>
+   </div>
+  </div>
+  <button class="button">Subscribe</button>
+ </div>
+   <script>
+  const subscriptions = document.querySelectorAll('.subscription');
+  const subscribeBtn = document.querySelector('.subscribe-btn');
+  let selectedSubscription = null;
+  
+  subscriptions.forEach(subscription => {
+   subscription.addEventListener('click', () => {
+    subscriptions.forEach(s => s.classList.remove('selected'));
+    subscription.classList.add('selected');
+    selectedSubscription = subscription.id;
+   });
+  });
+  
+  subscribeBtn.addEventListener('click', () => {
+   if (selectedSubscription) {
+    alert(You have subscribed to ${selectedSubscription}!);
+   } else {
+    alert('Please select a subscription first!');
+   }
+  });
+ </script>
+</body>
+</html>
