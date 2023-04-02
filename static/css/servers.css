@@ -1,0 +1,75 @@
+.poppins{
+    font-family:'Poppins';
+}
+
+.lilita-one{
+    font-family: 'Lilita One';
+}
+
+.wrapper {
+ height: 100vh;
+ display:flex;
+ flex-direction: column;
+}
+
+h1{
+    color:#297CC2;
+    font-size:45px;
+    margin:0 auto;
+}
+
+.servers{
+    display:flex;
+    flex-direction:column;
+}
+
+.row-servers{
+    margin-left:398px;
+    margin-right:398px;
+    margin-top:49px;
+    display:flex;
+    flex-direction:row;
+    justify-content:space-between;
+}
+
+.server{
+    width:300px;
+    height:120px;
+    background: #297CC2;
+    border-radius:10px;
+    display:flex;
+    flex-direction:column;
+}
+
+.create-btn{
+    width: 120px;
+    height: 38px;
+    background:#1DC682;
+    border:0;
+    border-radius:10px;
+    transition:0.6s;
+    margin-left:1385px;
+}
+
+.create-btn:hover{
+    background:rgb(29,240,130);
+}
+
+.terminal-btn{
+    width:150px;
+    height:35px;
+    border:0;
+    background:#2D3943;
+    border-radius:10px;
+    transition:0.7s
+}
+
+.terminal-btn:hover{
+    background:gray;
+}
+
+h2{
+    font-size:30px;
+    margin-bottom:5px;
+    margin-top:10px;
+}
