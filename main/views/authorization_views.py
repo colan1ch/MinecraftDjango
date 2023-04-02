@@ -8,9 +8,9 @@ from main.views.common import get_context
 def login_page(request):
     if request.method == "POST":
         f = request.POST
-        u = authenticate(username=f.data['login'], password=f.data['psw'])
+        u = authenticate(username=f['login'], password=f['psw'])
         if u is not None:
-            user = User.objects.get(username=f.data['email'])
+            user = User.objects.get(username=f['email'])
             login(request, user)
             return redirect('/profile')
         else:
@@ -25,9 +25,8 @@ def login_page(request):
 def registration_page(request):
     if request.method == "POST":
         f = request.POST
-        data = f.data
-        user = User(username=data['login'], email=data['email'], first_name=data['first'], last_name=data['last'])
-        user.set_password(data['psw'])
+        user = User(username=f['login'], email=f['email'], first_name=f['first'], last_name=f['last'])
+        user.set_password(f['psw'])
         user.save()
         return redirect('/authorization')
     else:
