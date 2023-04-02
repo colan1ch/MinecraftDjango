@@ -223,7 +223,7 @@
         'use strict'
         let header = document.getElementById("header")
         $(window).on("scroll", function() {
-          $(header).toggleClass("header-anim", $(this).scrollTop() > $(window).height()-900);
+          $(header).toggleClass("header-anim", $(this).scrollTop() > $(window).height()-800);
         });
         let rates = document.getElementsByClassName("rate")
         $(window).on("scroll", function() {
