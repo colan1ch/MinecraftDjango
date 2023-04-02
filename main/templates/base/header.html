@@ -1,37 +1,45 @@
 {% load static %}
 {% load bootstrap5 %}
 <header>
-<div class="header">
-    <a href="/"><img class="logo" src="наш лого.png"></a>
-    <div class="header-left">
-        <a href="#contact">Create server</a>
-        <a href="#contact">Top server</a>
-        <a href="#about">About us</a>
-        <head>
-            <meta charset="utf-8">
-            <title>Category</title>
-        </head>
-        <body>
-            <form>
-            <p><select name="select" size="3" multiple>
-                <option selected value="s1">Category_name1</option>
-                <option value="s2">Category_name2</option>
-                <option value="s3">Category_name3/option>
-            </select>
-            <input type="submit" value="Отправить"></p>
-                </form>
-        </body>
-        <div class="d1">
-            <form>
-                <input type="text" placeholder="Искать здесь...">
-                <button type="submit"></button>
-            </form>
-        </div>
-        <a href="/"><img class="logo" src="тележка.png"></a>
-        <p><input value= user_wallet></p>
-        <a href="#contact">Sign in</a>
-        <a href="#about">Log in</a>
-    </div>
+<style>
+.general_elem_group button {
+    background-color: #506a80;
+    color: white;
+    border: none;
+    padding: 10px 24px; /* Some padding */
+    cursor: pointer; /* Pointer/hand icon */
+     /* Float the buttons side by side */
+}
+/* Clear floats (clearfix hack) */
+.general_elem_group:after {
+    content: "";
+    clear: both;
+    display: table;
+}
 
+.general_elem_group:hover {
+    background-color: #506a80;
+}
+
+
+header {
+	display: flex;
+    background-color: #506a80;
+    flex-direction: row;
+}
+
+</style>
+<div class="header">
+  <div class="general_elem_group">
+    <a href="/"><img class="logo" src="наш лого.png"></a>
+    <button>About us</button>
+    <button>Plans</button>
+    <button>Features</button>
+    <button>Create server</button>
+    <button>SIGN IN</button>
+    <button>LOG IN</button>
+  </div>
+  </div>
 </div>
 </header>
+
