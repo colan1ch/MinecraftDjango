@@ -1,0 +1,29 @@
+.container{
+    color: white;
+}
+
+.profile-block{
+    background-color: #2D3943;
+    color: white;
+    margin: 5px;
+    padding: 5px;
+}
+
+.profile-button{
+    background-color: #1DC682;
+    color: white;
+    border-radius: 10px;
+    border: none;
+    margin: 5px;
+    padding: 5px;
+}
+
+.one-line{
+    width: 360px;
+    height: 130px;
+}
+
+.two-lines{
+    width: 360px;
+    height: 275px;
+}

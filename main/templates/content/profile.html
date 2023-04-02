@@ -1,8 +1,51 @@
 {% extends 'base/base.html' %}
 
+{% block extra_css %}
+<link rel="stylesheet" href="static/css/profile.css">
+{% endblock %}
+
 {% block content %}
 <div class="container text-center">
-      Какой-то профиль
+      <h3>Settings</h3>
+      <div class="row">
+            <form class="col profile-block one-line">
+                  <div style="width: 324px; margin: 0px auto;">
+                        <h4>Username</h4>
+                        <input type="text">
+                        <button class="profile-button">Change username</button>
+                  </div>
+            </form>
+            <form class="col profile-block one-line">
+                  <div style="width: 324px; margin: 0px auto;">
+                        <h4>E-mail</h4>
+                        <input type="text">
+                        <button class="profile-button">Change email</button>
+                  </div>
+            </form>
+      </div>
+      <div class="row">
+            <form class="col profile-block two-lines">
+                  <h4>Password</h4>
+                  <div style="width: 324px; margin: 0px auto">
+                        <h6>Old password</h6>
+                        <input type="text">
+
+                        <h6>New password</h6>
+                        <input type="text">
+                        <h6>Repeat password</h6>
+                        <input type="text">
+                        <button class="profile-button">Change password</button>
+                  </div>
+            </form>
+            <form class="col profile-block two-lines">
+                  <h4>Logo</h4>
+                  <div style="width: 324px; margin: 0px auto">
+                        <img src="../../static/img/profile.png" style="width: 125px; height: 125px;">
+                        <input type="file">
+                        <button class="profile-button">Change logo</button>
+                  </div>
+            </form>
+      </div>
 </div>
 
 {% endblock %}
