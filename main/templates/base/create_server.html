@@ -1,65 +1,187 @@
 <!DOCTYPE html>
 <html>
+
 <head>
- <title>Create Server</title>
+    <title>Create Server</title>
+    <link rel="stylesheet" href="style.css">
 </head>
+
+<style>
+    @import url('https://fonts.googleapis.com/css2?family=Lilita+One&family=Poppins&display=swap');
+
+    body {
+        margin: 0;
+        padding: 0;
+        font-family: Arial, sans-serif;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        height: 100vh;
+    }
+
+    .container {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
+        transform: scale(1.07);
+    }
+
+    .title {
+        font-family: 'Poppins';
+        font-style: normal;
+        font-weight: 600;
+        font-size: 32px;
+        font-weight: bold;
+        text-align: center;
+        margin-bottom: 20px;
+        color: #007bff;
+    }
+
+    .server_name {
+        padding-bottom: 20px;
+        text-align: center;
+    }
+
+    .server_name input {
+        font-size: 18px;
+    }
+
+    .plan {
+        margin-bottom: 0;
+        padding-bottom: 5px;
+    }
+
+    .subscriptions {
+        display: flex;
+        flex-direction: row;
+        justify-content: center;
+        margin-bottom: 20px;
+    }
+
+    .subscription {
+        margin: 0 10px;
+        padding: 20px;
+        border: 1px solid #007bff;
+        border-radius: 5px;
+        cursor: pointer;
+        transition: all 0.3s ease;
+        flex: 1;
+        max-width: 320px;
+        color: #007bff;
+    }
+
+    .subscription:hover {
+        box-shadow: 0 0 10px rgba(0, 0, 0, 0.3);
+    }
+
+    .subscription.selected {
+        background-color: #007bff;
+        color: #fff;
+    }
+
+    .subscription .name {
+        font-family: 'Lilita One';
+        font-style: normal;
+        font-size: 35px;
+        font-weight: bold;
+        text-align: center;
+        margin-bottom: 10px;
+        letter-spacing: 1px;
+    }
+
+    .subscription .price {
+        font-size: 18px;
+        font-weight: bold;
+        text-align: center;
+        margin-bottom: 10px;
+    }
+
+    .subscription .features {
+        margin-bottom: 10px;
+    }
+
+    .subscription .features li {
+        margin-bottom: 5px;
+    }
+
+    .button {
+        padding: 10px 20px;
+        background-color: #007bff;
+        color: #fff;
+        border: none;
+        border-radius: 5px;
+        cursor: pointer;
+        transition: all 0.3s ease;
+    }
+
+    .button:hover {
+        background-color: #0062cc;
+    }
+</style>
+
 <body>
- <div class="container">
-  <div class="title">Create Server</div>
-  <div class="subscriptions">
-   <div class="subscription">
-    <div class="name">Free</div>
-    <div class="price">$0.00 /month</div>
-    <ul class="features">
-     <li>Unlimited Slots</li>
-     <li>Every day backup</li>
-     <li>512MB RAM</li>
-     <li>Real-time console</li>
-    </ul>
-   </div>
-   <div class="subscription">
-    <div class="name">Budget</div>
-    <div class="price">$1.00 /month</div>
-    <ul class="features">
-     <li>Unlimited Slots</li>
-     <li>Every day backup</li>
-     <li>2GB RAM</li>
-     <li>Real-time console</li>
-    </ul>
-   </div>
-   <div class="subscription">
-    <div class="name">Boost</div>
-    <div class="price">$3.00 /month</div>
-    <ul class="features">
-     <li>Unlimited Slots</li>
-     <li>Every day backup</li>
-     <li>4GB RAM</li>
-     <li>Real-time console</li>
-    </ul>
-   </div>
-  </div>
-  <button class="button">Subscribe</button>
- </div>
-   <script>
-  const subscriptions = document.querySelectorAll('.subscription');
-  const subscribeBtn = document.querySelector('.subscribe-btn');
-  let selectedSubscription = null;
-  
-  subscriptions.forEach(subscription => {
-   subscription.addEventListener('click', () => {
-    subscriptions.forEach(s => s.classList.remove('selected'));
-    subscription.classList.add('selected');
-    selectedSubscription = subscription.id;
-   });
-  });
-  
-  subscribeBtn.addEventListener('click', () => {
-   if (selectedSubscription) {
-    alert(You have subscribed to ${selectedSubscription}!);
-   } else {
-    alert('Please select a subscription first!');
-   }
-  });
- </script>
+    <div class="container">
+        <div class="title">Create server</div>
+        <div class="server_name">
+            <input type="text" placeholder="Server name">
+        </div>
+        <p class="plan">Plan</p>
+        <div class="subscriptions">
+            <div class="subscription">
+                <div class="name">Free</div>
+                <div class="price">$0.00 /month</div>
+                <ul class="features">
+                    <li>Unlimited Slots</li>
+                    <li>Every day backup</li>
+                    <li>512MB RAM</li>
+                    <li>Real-time console</li>
+                </ul>
+            </div>
+            <div class="subscription">
+                <div class="name">Budget</div>
+                <div class="price">$1.00 /month</div>
+                <ul class="features">
+                    <li>Unlimited Slots</li>
+                    <li>Every day backup</li>
+                    <li>2GB RAM</li>
+                    <li>Real-time console</li>
+                </ul>
+            </div>
+            <div class="subscription">
+                <div class="name">Boost</div>
+                <div class="price">$3.00 /month</div>
+                <ul class="features">
+                    <li>Unlimited Slots</li>
+                    <li>Every day backup</li>
+                    <li>4GB RAM</li>
+                    <li>Real-time console</li>
+                </ul>
+            </div>
+        </div>
+        <button class="button">Subscribe</button>
+    </div>
+    <script>
+        const subscriptions = document.querySelectorAll('.subscription');
+        const subscribeBtn = document.querySelector('.subscribe-btn');
+        let selectedSubscription = null;
+
+        subscriptions.forEach(subscription => {
+            subscription.addEventListener('click', () => {
+                subscriptions.forEach(s => s.classList.remove('selected'));
+                subscription.classList.add('selected');
+                selectedSubscription = subscription.id;
+            });
+        });
+
+        subscribeBtn.addEventListener('click', () => {
+            if (selectedSubscription) {
+                alert(`You have subscribed to ${selectedSubscription}!`);
+            } else {
+                alert('Please select a subscription first!');
+            }
+        });
+    </script>
 </body>
+
 </html>
