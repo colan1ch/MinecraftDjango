@@ -1,59 +1,27 @@
 {% load static %}
 {% load bootstrap5 %}
+
+<link rel="stylesheet" type="text/css" href="{% static 'css/header.css' %}" />
+
 <header>
-<style>
-
-.header {
-    display: flex;
-    justify-content: space-between;
-    background-color: #506a80;
-    flex-direction: row;
-    box-sizing: border-box;
-    width: 100%;
-}
-
-.header: after {
-    content: "";
-    clear: both;
-    display: table;
-}
-
-.header: hover {
-    background-color: #506a80;
-}
-
-.left_elem_group button {
-    background-color: #506a80;
-    position: left;
-    color: white;
-    border: none;
-    padding: 10px 24px; /* Some padding */
-    cursor: pointer; /* Pointer/hand icon */
-     /* Float the buttons side by side */
-}
-
-.right_elem_group button {
-    background-color: #506a80;
-    position: right;
-    color: white;
-    border: none;
-    padding: 10px 24px; /* Some padding */
-    cursor: pointer; /* Pointer/hand icon */
-     /* Float the buttons side by side */
-}
-</style>
-
-<div class="header">
-  <div class="left_elem_group">
-    <a href="/"><img class="logo" src="наш лого.png"></a>
-    <button>About us</button>
-    <button>Plans</button>
-    <button>Features</button>
-    <button>Create server</button>
-  </div>
-  <div class="right_elem_group">
-    <button>SIGN IN</button>
-    <button>LOG IN</button>
-  </div>
-</div>
+    <div class="header">
+        <div class="general_elem_group">
+            <div>
+                <a href="/"><img class="logo" src="{% static 'img/minecloud.png' %}"></a>
+            </div>
+            <div class="filler"></div>
+            <div>
+                <button>About us</button>
+                <button>Plans</button>
+                <button>Features</button>
+                <button>Create server</button>
+            </div>
+            <div class="filler"></div>
+            <div>
+                <button style="padding-right: 10px;">SIGN UP</button>
+                <button style="padding-left: 10px;">LOG IN</button>
+            </div>
+        </div>
+    </div>
+    </div>
 </header>
