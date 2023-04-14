@@ -2,43 +2,58 @@
 {% load bootstrap5 %}
 <header>
 <style>
-.general_elem_group button {
+
+.header {
+    display: flex;
+    justify-content: space-between;
     background-color: #506a80;
+    flex-direction: row;
+    box-sizing: border-box;
+    width: 100%;
+}
+
+.header: after {
+    content: "";
+    clear: both;
+    display: table;
+}
+
+.header: hover {
+    background-color: #506a80;
+}
+
+.left_elem_group button {
+    background-color: #506a80;
+    position: left;
     color: white;
     border: none;
     padding: 10px 24px; /* Some padding */
     cursor: pointer; /* Pointer/hand icon */
      /* Float the buttons side by side */
 }
-/* Clear floats (clearfix hack) */
-.general_elem_group:after {
-    content: "";
-    clear: both;
-    display: table;
-}
 
-.general_elem_group:hover {
+.right_elem_group button {
     background-color: #506a80;
+    position: right;
+    color: white;
+    border: none;
+    padding: 10px 24px; /* Some padding */
+    cursor: pointer; /* Pointer/hand icon */
+     /* Float the buttons side by side */
 }
-
-
-header {
-	display: flex;
-    background-color: #506a80;
-    flex-direction: row;
-}
-
 </style>
+
 <div class="header">
-  <div class="general_elem_group">
+  <div class="left_elem_group">
     <a href="/"><img class="logo" src="наш лого.png"></a>
     <button>About us</button>
     <button>Plans</button>
     <button>Features</button>
     <button>Create server</button>
+  </div>
+  <div class="right_elem_group">
     <button>SIGN IN</button>
     <button>LOG IN</button>
-  </div>
   </div>
 </div>
 </header>
