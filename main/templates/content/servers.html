@@ -41,75 +41,21 @@
             <h1 class="poppins">Servers</h1>
             <button type="button" class="create-btn"><img src="/static/img/servers/create.svg" width="20" height="19"><span class="poppins text-white">Create</span></button>
             <div class="servers">
-                <div class="row-servers">
+                {% for server in servers%}
+                {% if forloop.counter|add:"3"|divisibleby:4%}
+                <div class="row">
+                  {% endif %}
                     <div class="server">
                         <div style="margin:0 auto; text-align:center;">
-                            <h2 class="text-white poppins">Server name</h2>
+                            <h2 class="text-white poppins"> {{server.name}} </h2>
                             <p class="poppins" style="color:#A4A4A4; font-size:15px; margin-bottom:5px;">plan: free</p>
                             <button type="button" class="terminal-btn"><img src="/static/img/servers/terminal.svg" width="20" height="20"><span class="poppins text-white">Control panel</span> </button>
                         </div>
                     </div>
-                    <div class="server">
-                        <div style="margin:0 auto; text-align:center;">
-                            <h2 class="text-white poppins">Server name</h2>
-                            <p class="poppins" style="color:#A4A4A4; font-size:15px; margin-bottom:5px;">plan: free</p>
-                            <button type="button" class="terminal-btn"><img src="/static/img/servers/terminal.svg" width="20" height="20"><span class="poppins text-white">Control panel</span> </button>
-                        </div>
-                    </div>
-                    <div class="server">
-                        <div style="margin:0 auto; text-align:center;">
-                            <h2 class="text-white poppins">Server name</h2>
-                            <p class="poppins" style="color:#A4A4A4; font-size:15px; margin-bottom:5px;">plan: free</p>
-                            <button type="button" class="terminal-btn"><img src="/static/img/servers/terminal.svg" width="20" height="20"><span class="poppins text-white">Control panel</span> </button>
-                        </div>
-                    </div>
+                  {% if forloop.counter|divisibleby:4 or forloop.last %}
                 </div>
-                <div class="row-servers">
-                    <div class="server">
-                        <div style="margin:0 auto; text-align:center;">
-                            <h2 class="text-white poppins">Server name</h2>
-                            <p class="poppins" style="color:#A4A4A4; font-size:15px; margin-bottom:5px;">plan: free</p>
-                            <button type="button" class="terminal-btn"><img src="/static/img/servers/terminal.svg" width="20" height="20"><span class="poppins text-white">Control panel</span> </button>
-                        </div>
-                    </div>
-                    <div class="server">
-                        <div style="margin:0 auto; text-align:center;">
-                            <h2 class="text-white poppins">Server name</h2>
-                            <p class="poppins" style="color:#A4A4A4; font-size:15px; margin-bottom:5px;">plan: free</p>
-                            <button type="button" class="terminal-btn"><img src="/static/img/servers/terminal.svg" width="20" height="20"><span class="poppins text-white">Control panel</span> </button>
-                        </div>
-                    </div>
-                    <div class="server">
-                        <div style="margin:0 auto; text-align:center;">
-                            <h2 class="text-white poppins">Server name</h2>
-                            <p class="poppins" style="color:#A4A4A4; font-size:15px; margin-bottom:5px;">plan: free</p>
-                            <button type="button" class="terminal-btn"><img src="/static/img/servers/terminal.svg" width="20" height="20"><span class="poppins text-white">Control panel</span> </button>
-                        </div>
-                    </div>
-                </div>
-                <div class="row-servers">
-                    <div class="server">
-                        <div style="margin:0 auto; text-align:center;">
-                            <h2 class="text-white poppins">Server name</h2>
-                            <p class="poppins" style="color:#A4A4A4; font-size:15px; margin-bottom:5px;">plan: free</p>
-                            <button type="button" class="terminal-btn"><img src="/static/img/servers/terminal.svg" width="20" height="20"><span class="poppins text-white">Control panel</span> </button>
-                        </div>
-                    </div>
-                    <div class="server">
-                        <div style="margin:0 auto; text-align:center;">
-                            <h2 class="text-white poppins">Server name</h2>
-                            <p class="poppins" style="color:#A4A4A4; font-size:15px; margin-bottom:5px;">plan: free</p>
-                            <button type="button" class="terminal-btn"><img src="/static/img/servers/terminal.svg" width="20" height="20"><span class="poppins text-white">Control panel</span> </button>
-                        </div>
-                    </div>
-                    <div class="server">
-                        <div style="margin:0 auto; text-align:center;">
-                            <h2 class="text-white poppins">Server name</h2>
-                            <p class="poppins" style="color:#A4A4A4; font-size:15px; margin-bottom:5px;">plan: free</p>
-                            <button type="button" class="terminal-btn"><img src="/static/img/servers/terminal.svg" width="20" height="20"><span class="poppins text-white">Control panel</span> </button>
-                        </div>
-                    </div>
-                </div>
+                {% endif %}
+                {% endfor %}
             </div>
         </div>
 </body>
