@@ -1,9 +1,9 @@
 from django.shortcuts import render
-from main.models import Server
+from main.models import Servers
 
 
 def servers_page(request):
     context = {
-        'servers': Server.objects.all()
+        'servers': Servers.objects.all()
     }
     return render(request, "servers.html", context)

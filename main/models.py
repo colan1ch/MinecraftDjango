@@ -1,8 +1,12 @@
 from django.db import models
+from django.contrib.auth import get_user_model
 
 
-class Server(models.Model):
-    name = models.CharField(max_length=255)
-    description = models.CharField(max_length=511)
-    online = models.IntegerField()
-    address = models.CharField(max_length=15)
+class Servers(models.Model):
+    name = models.CharField(max_length=100)
+    user = models.ForeignKey(to=get_user_model(), on_delete=models.CASCADE)
+    docker_id = models.CharField(max_length=64)
+
+
+class UserSettings(models.Model):
+    user = models.ForeignKey(to=get_user_model(), on_delete=models.CASCADE)
