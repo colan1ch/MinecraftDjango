@@ -1,8 +1,41 @@
 {% load static %}
 {% load bootstrap5 %}
-<footer class="footer text-center text-lg-start bg-light text-muted mt-auto">
+<footer class="footer text-center text-lg-start mt-auto">
     <div class="text-center">
       &copy; ШП, 2023.
       Сделано на <a class="text-reset fw-bold" href="https://getbootstrap.com">Bootstrap 5</a>
     </div>
 </footer>
+<style type="text/css">
+ .footer {
+  padding: 20px;
+}
+.footer a {
+  text-decoration: none;
+}
+.footer .text-center {
+  margin-bottom: 20px;
+}
+.footer .text-reset {
+  color: #6c757d;
+}
+.footer .text-reset:hover {
+  color: #0d6efd;
+}
+.footer {
+    color:white;
+    font-weight: 600;
+    font-family: 'Poppins', sans-serif;
+    background-color: #506a80;
+}
+@media (min-width: 992px) {
+  .footer {
+    position: fixed;
+    bottom: 0;
+    left: 0;
+    width: 100%;
+  }
+}
+/* Bootstrap 5 utilities */
+{% bootstrap_css %}
+</style>
