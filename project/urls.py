@@ -1,5 +1,5 @@
+from django.urls import path, include
 from django.contrib import admin
-from django.urls import path
 from main.views import admin_views, main_views, profile_views, authorization_views, servers
 
 urlpatterns = [
@@ -10,6 +10,6 @@ urlpatterns = [
     path('registration/', authorization_views.registration_page, name = "Регистрация"),
     path('login/', authorization_views.login_page, name = "Логин"),
     path('error404/', main_views.error404_page, name = "Ошибка 404"),
-    path('admin/', admin_views.index_page, name="Админ. панель"),
+    path('admin/', admin.site.urls, name="Админ. панель"),
     path('servers/', servers.servers_page, name="Сервера"),
 ]

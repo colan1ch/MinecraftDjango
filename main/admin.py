@@ -1,3 +1,8 @@
 from django.contrib import admin
+from main.models import Servers
 
-# Register your models here.
+class ServersAdmin(admin.ModelAdmin):
+    pass
+
+
+admin.site.register(Servers, ServersAdmin)
