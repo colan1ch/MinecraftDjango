@@ -1,0 +1,172 @@
+nav {
+    background: rgba(41, 43, 44, 0);
+    display: flex;
+    justify-content: space-between;
+}
+
+.wrapper {
+    height: 110vh;
+    display: flex;
+    flex-direction: column;
+}
+
+.title {
+    font-size: 40px;
+}
+
+.logo {
+    margin-bottom: 35px;
+}
+
+
+.nav-link {
+    font-size: 30px;
+    padding: 15px;
+}
+
+.authorization {
+    font-size: 30px;
+    display: flex;
+
+}
+
+#navbarNav {
+    margin-left: 100px;
+
+}
+
+.poppins {
+    font-family: 'Poppins';
+}
+
+.lilita-one {
+    font-family: 'Lilita One';
+}
+
+.clouds{
+    width:1920px;
+    height:539px;
+    position:relative;
+}
+
+.main{
+    margin-top:20px;
+}
+
+body{
+    background:rgb(159,213,255);
+    z-index:0;
+
+}
+
+.login{
+    width:615px;
+    height:800px;
+    background: linear-gradient(180deg, #FFFFFF 82.81%, #9FD5FF 100%);
+    box-shadow: 0px 4px 17px rgba(0, 0, 0, 0.17);
+    border-radius: 60px;
+    z-index:1;
+    position:absolute;
+    left: 34.45%;
+    right: 33.52%;
+    top: 30.09%;
+    bottom: 5.83%;
+}
+
+.psheno{
+    position: absolute;
+    left:-160px;
+    top:-120px;
+    z-index:-1;
+}
+
+.pig{
+    position: absolute;
+    left:500px;
+    top:600px;
+    z-index:-1;
+}
+
+h2{
+    font-size:30px;
+    margin:0 auto;
+    text-align:center;
+    margin-top:170px;
+}
+
+.input-form{
+    width:405px;
+    height:45px;
+    margin-left:100px;
+}
+
+.form{
+    display:flex;
+    flex-direction:column;
+    justify-content:space-between;
+    margin-top:50px;
+}
+
+.form-element{
+    margin:10px;
+    margin-left:0;
+}
+
+.input-form{
+    border: solid #E0E2E9;
+    border-radius:10px;
+}
+#password{
+    background: url("/static/img/login/password.svg") 15px 15px  no-repeat;
+}
+
+#email{
+    background: url("/static/img/login/email.svg") 5px 5px  no-repeat;
+}
+
+.submit-button{
+    width:405px;
+    height:45px;
+    text-align:center;
+    background:#008FFF;
+    border: solid #008FFF;
+    border-radius:10px;
+    margin:10px;
+    margin-left:100px;
+}
+
+.forgot-password{
+    font-style: normal;
+    font-weight: 600;
+    font-size: 15px;
+    line-height: 24px;
+    text-align: center;
+    letter-spacing: 0.1px;
+    color: #80C1FE;
+    margin-left:235px;
+    margin-top:10px;
+}
+
+.line{
+    border: 1px solid #E4E6EC;
+    height:0.2px;
+    width:171px;
+    margin-top:10px;
+
+}
+
+.society{
+    display:flex;
+    flex-direction:row;
+    margin-top:50px;
+    margin-left:152px;
+}
+
+.society-login{
+    border: 1px solid #E4E6EC;
+    border-radius:10px;
+    width:137px;
+    height:45.5px;
+    background: #FFFFFF;
+    margin:10px;
+}

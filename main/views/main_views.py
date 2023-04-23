@@ -1,6 +1,7 @@
 from django.shortcuts import render
 from main.views.common import get_context
-
+from django.shortcuts import render, redirect
+from django.contrib.auth import authenticate, login, logout
 
 def index_page(request):
     context = get_context(request)
@@ -10,3 +11,6 @@ def index_page(request):
 def error404_page(request):
     context = get_context(request)
     return render(request, "error404.html", context)
+
+
+

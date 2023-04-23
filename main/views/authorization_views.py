@@ -4,7 +4,7 @@ from main.views.common import get_context
 
 def login_page(request):
     context = get_context(request)
-    return render(request, "authorization.html", context)
+    return render(request, "login.html", context)
 
 def registration_page(request):
     context = get_context(request)
