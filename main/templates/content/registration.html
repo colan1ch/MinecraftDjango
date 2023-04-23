@@ -3,7 +3,9 @@
 {% load static %}
 {% load bootstrap5 %}
 
+{% block extra_css %}
 <link rel="stylesheet" type="text/css" href="{% static 'css/register.css' %}" />
+{% endblock %}
 
 {% block content %}
  <div class="registration">
@@ -22,7 +24,7 @@
  <br>
  
  <div class="divbutton">
- <input type="submit" href="#" class="button">Регистрация</input>
+ <input type="submit" href="#" class="button" value="Регистрация">
  </div><br>
  <div class="divgoogle">
  <a href="#" class="google">Продолжить с <b>Google</b></a>
