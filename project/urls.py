@@ -12,3 +12,4 @@ urlpatterns = [
     path('error404/', main_views.error404_page, name = "Ошибка 404"),
     path('admin/', admin_views.index_page, name="Админ. панель"),
     path('servers/', servers.servers_page, name="Сервера"),
+]
