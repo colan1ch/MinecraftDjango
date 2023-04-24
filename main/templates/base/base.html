@@ -1,32 +1,24 @@
 <!DOCTYPE html>
 <html lang="ru">
 {% load static %}
-{% load bootstrap5 %}
-{% bootstrap_messages %}
-
     <head>
-        {% include "base/head.html" %}
-        {% bootstrap_css %}
-        {% block extra_css %} {% endblock %}
+        {% block extra_css %}
+        {% endblock %}
+        <link href='{% static "css/base.css" %}' rel="stylesheet">
+        <link href='{% static "css/header.css" %}' rel="stylesheet">
+        <link href='{% static "css/footer.css" %}' rel="stylesheet">
         <title>{{ pagename }}</title>
     </head>
 
     <body>
-        {# Возможно, если будут страницы с другим дизайном (например админ. панель), то следует использовать block #}
         {% include "base/header.html" %}
         <main>
-            {% block content %} {% endblock %}
+            {% block content %}
+            {% endblock %}
         </main>
         {% include "base/footer.html" %}
 
-        {% bootstrap_javascript %}
-        {% block extra_js %} {% endblock %}
+        {% block extra_js %}
+        {% endblock %}
     </body>
-
-    <footer>
-        {% include "base/head.html" %}
-        {% bootstrap_css %}
-        <link href='{% static "css/footer.css" %}' rel="stylesheet">
-    </footer>
-
 </html>

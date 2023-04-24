@@ -1,68 +1,76 @@
-@import url('https://fonts.googleapis.com/css2?family=Lilita+One&family=Poppins:wght@400;600&display=swap');
-
-* {
-    margin: 0;
-    padding: 0;
+header{
+    background-color: #506A80;
+    width: 100%;
+    height: 80px;
 }
 
-body {
-    background-color: #ccf;
-}
-
-.general_elem_group button {
-    background-color: #506a80;
+header a{
+    text-decoration: none;
     color: white;
-    border: none;
-    padding: 10px 24px;
-    /* Some padding */
-    cursor: pointer;
-    /* Pointer/hand icon */
-    /* Float the buttons side by side */
+    font-family: 'Poppins';
+    font-weight: bold;
+    margin-right: 20px;
 }
-
-/* Clear floats (clearfix hack) */
-.general_elem_group:after {
-    content: "";
-    clear: both;
-    display: table;
-}
-
-.general_elem_group {
+header nav{
     display: flex;
-    height: 100%;
-    align-items: center;
-    width: 100%;
-}
-
-.logo {
-    height: 35px;
-    margin-left: 15px;
-    top: -3px;
-    position: relative;
-}
-
-.general_elem_group:hover {
-    background-color: #506a80;
-}
-
-
-header {
-    display: flex;
-    background-color: #506a80;
     flex-direction: row;
+    justify-content: space-between;
+    align-items: center;
+    text-align: center;
+    vertical-align: middle;
+}
+header .logo img{
+    margin-top: -20px;
+    margin-left: 10px;
+}
+header .menu{
+    margin-top: 15px;
+    position: relative;
+    right: 50px;
+}
+header .menu-auth{
+    margin-top: 15px;
+    position: relative;
+    left: 55px;
+}
+header .auth{
+    margin-top: 15px;
+}
+header .logo{
+    display: flex;
+}
+.logo h1, .logo p{
+    margin-top: 17px;
+    margin-left: 5px;
+    color: white;
+    font-size: 35px;
+    font-family: 'Lilita One', cursive;
+    font-weight: 500;
+}
+header .profile{
+    color: white;
+    font-weight: bold;
     height: 60px;
+    display: flex;
+    justify-content: center;
 }
-
-.header {
-    width: 100%;
+header .profile .servers{
+    height: 100%;
+    width: 100px;
+    margin-top: 7px;
 }
-
-.filler {
-    flex: 1;
+header .profile .settings{
+    height: 100%;
+    width: 100px;
+    margin-top: 10px;
 }
-
-button {
-    font-size: 17.5px;
-    font-weight: 600;
-    font-family: 'Poppins', sans-serif;
+header .profile .user{
+    display: flex;
+    margin-top: 14px;
+}
+.logout{
+    text-align: end;
+    color: #A4A4A4;
+    margin-top: -5px;
+    font-size: 14px;
 }

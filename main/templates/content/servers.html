@@ -1,31 +1,60 @@
 {% extends 'base/base.html' %}
-
+{%load static%}
 {% block extra_css %}
-    <link rel="stylesheet" href="/static/css/servers.css">
-    <link href='https://fonts.googleapis.com/css?family=Poppins' rel='stylesheet'>
-    <link href='https://fonts.googleapis.com/css?family=Lilita One' rel='stylesheet'>
+    <link rel="stylesheet" href='{%static "css/servers.css"%}'>
 {% endblock %}
 
-{% block content%}
-        <div class="wrapper" style="margin-top:100px;">
-            <h1 class="poppins">Servers</h1>
-            <button type="button" class="create-btn"><img src="/static/img/servers/create.svg" width="20" height="19"><span class="poppins text-white">Create</span></button>
-            <div class="servers">
-                {% for server in servers%}
-                {% if forloop.counter|add:"2"|divisibleby:3%}
-                <div class="row-servers">
-                {% endif %}
-                    <div class="server">
-                        <div style="margin:0 auto; text-align:center;">
-                            <h2 class="text-white poppins">{{server.name}}</h2>
-                            <p class="poppins" style="color:#A4A4A4; font-size:15px; margin-bottom:5px;">plan: free</p>
-                            <button type="button" class="terminal-btn"><img src="/static/img/servers/terminal.svg" width="20" height="20"><span class="poppins text-white">Control panel</span> </button>
-                        </div>
+{% block content %}
+<h1 class="lilita-one">Your servers</h1>
+
+    <div class="create_button">
+        <a href="#">
+        <img src='{% static "img/servers/create.svg" %}'>
+        <p>Create</p>
+        </a>
+    </div>
+
+<div class="content poppins">
+    <div class="column">
+        <div class="row">
+            <div class="row-item">
+                <h2>Server name</h2>
+                <p class="plan_text">Plan: free</p>
+                <div class="flex-container">
+                <a href="#">
+                    <div class="button">
+                        <img src='{%static "img/servers/control_panel.svg"%}'>
+                        <p>Control panel</p>
                     </div>
-                {% if forloop.counter|divisibleby:3 or forloop.last %}
+                </a>
                 </div>
-                {% endif %}
-                {% endfor %}
+            </div>
+            <div class="row-item">
+                <h2>Server name</h2>
+                <p class="plan_text">Plan: free</p>
+                <div class="flex-container">
+                <a href="#">
+                    <div class="button">
+                        <img src='{%static "img/servers/control_panel.svg"%}'>
+                        <p>Control panel</p>
+                    </div>
+                </a>
+                </div>
+            </div>
+            <div class="row-item">
+                <h2>Server name</h2>
+                <p class="plan_text">Plan: free</p>
+                <div class="flex-container">
+                <a href="#">
+                    <div class="button">
+                        <img src='{%static "img/servers/control_panel.svg"%}'>
+                        <p>Control panel</p>
+                    </div>
+                </a>
+                </div>
             </div>
         </div>
+    </div>
+</div>
 {% endblock %}
+

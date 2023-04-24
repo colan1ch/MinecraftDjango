@@ -1,37 +1,47 @@
 {% extends 'base/base.html' %}
-
 {% load static %}
-{% block extra_css %}
-<link rel="stylesheet" type="text/css" href="{% static 'css/register.css' %}"/>
+
+{% block extra_css%}
+<link href='{% static "css/registration.css" %}' rel="stylesheet">
 {% endblock %}
 
-{% block content %}
-<div class="registration">
-    <div class="korona">
-        <img class="image" src="%D0%BA%D0%BE%D1%80%D0%BE%D0%BD%D0%B0.png"/>
-    </div>
-    <h1><b>Sign up</b></h1>
-    <form action="" method="post">
-        <div class="decoration">
-            <input type="text" placeholder="Имя"/><br>
-            <input type="text" placeholder="Фамилия"/><br>
-            <input type="email" placeholder="E-mail"/><br>
-            <input type="password" placeholder="Пароль"/><br>
-            <input type="password" placeholder="Повторите пароль"/><br>
-            <br>
-            <br>
 
-            <div class="divbutton">
-                <input type="submit" href="#" class="button" value="Регистрация">
-            </div>
-            <br>
-            <div class="divgoogle">
-                <a href="#" class="google">Продолжить с <b>Google</b></a>
-            </div>
-        </div>
-        <div class="egs">
-            <img class="image2" src="%D1%8F%D0%B9%D1%86%D0%BE.png"/>
-        </div>
-    </form>
+{% block content%}
+<div class="flex-container">
+<div>
+    <img class="bee" height="200" width="auto" src='{% static "img/auth/bee.png" %}'>
+</div>
+<div class="content">
+    <div class="form">
+        <form action="" method="post">
+            <h3 class="poppins">Registration</h3>
+            <div class="form-item">
+                <img class="icon" src='{% static "img/auth/user_icon.svg" %}' >
+                <input type="text" placeholder="Name">
+            </div><br>
+            <div class="form-item">
+                <img class="icon" src='{% static "img/auth/user_icon.svg" %}' >
+                <input type="text" placeholder="Surname">
+            </div><br>
+            <div class="form-item">
+                <img class="icon" src='{% static "img/auth/user_icon.svg" %}' >
+                <input type="text" placeholder="Login">
+            </div><br>
+            <div class="form-item">
+                <img class="icon" src='{% static "img/auth/email.svg" %}' >
+                <input type="email" placeholder="Email">
+            </div><br>
+            <div class="form-item">
+                <img class="icon" src='{% static "img/auth/key.svg" %}' >
+                <input type="password" placeholder="Password">
+            </div><br>
+            <div class="form-item">
+                <img class="icon" src='{% static "img/auth/key.svg" %}' >
+                <input type="password" placeholder="Repeat password">
+            </div><br>
+            <input type="submit" value="Registration"><br>
+        </form>
+    </div>
+    </div>
 </div>
 {% endblock %}

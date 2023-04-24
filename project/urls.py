@@ -1,6 +1,6 @@
 from django.urls import path, include
 from django.contrib import admin
-from main.views import admin_views, main_views, profile_views, authorization_views, servers
+from main.views import main_views, profile_views, authorization_views, servers
 
 urlpatterns = [
     path('', main_views.index_page, name="Главная"),
@@ -12,4 +12,5 @@ urlpatterns = [
     path('error404/', main_views.error404_page, name = "Ошибка 404"),
     path('admin/', admin.site.urls, name="Админ. панель"),
     path('servers/', servers.servers_page, name="Сервера"),
+    path('create_server/', main_views.create_server_page, name="Создать сервер"),
 ]

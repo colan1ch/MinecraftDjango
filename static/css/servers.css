@@ -1,77 +1,69 @@
-.poppins{
-    font-family:'Poppins';
+.content{
+    display: flex;
+    justify-content: center;
 }
-
-.lilita-one{
-    font-family: 'Lilita One';
+.row{
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
 }
-
-.wrapper {
- height: 100vh;
- display:flex;
- flex-direction: column;
+.row-item{
+    height: 90px;
+    width: 250px;
+    background-color: #297CC2;
+    margin: 20px;
+    text-align: center;
+    color: white;
+    border-radius: 10px;
 }
-
+.plan_text{
+    color: #c4c4c4;
+    margin-top: -10px;
+}
+.button{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-top: 3px;
+    height: 30px;
+    width: 150px;
+    background-color: #2D3943;
+    border-radius: 5px;
+}
+.flex-container{
+    display: flex;
+    justify-content: center;
+}
+a{
+    text-decoration: none;
+    color: white;
+}
+.button img{
+    height: 18px;
+    width: 18px;
+    margin-right: 3px;
+}
 h1{
-    color:#297CC2;
-    font-size:45px;
-    margin:0 auto;
+    margin-top: 30px;
+    color: #297CC2;
+    text-align: center;
+    font-size: 40px;
 }
-
-.servers{
-    display:flex;
-    flex-direction:column;
+.create_button{
+    margin: 0 auto;
+    height:50px;
+    width: 100px;
+    position: relative;
+    left: 360px;
 }
-
-.row-servers{
-    margin-left:398px;
-    margin-right:398px;
-    margin-top:49px;
-    display:flex;
-    flex-direction:row;
-    justify-content:space-between;
-}
-
-.server{
-    width:300px;
-    height:120px;
-    background: #297CC2;
-    border-radius:10px;
-    display:flex;
-    flex-direction:column;
-}
-
-.create-btn{
-    width: 120px;
-    height: 38px;
-    background:#1DC682;
-    border:0;
-    border-radius:10px;
-    transition:0.6s;
-    position: absolute;
-    right: 100px;
-    top: 220px;
-}
-
-.create-btn:hover{
-    background:rgb(29,240,130);
-}
-
-.terminal-btn{
-    width:150px;
-    height:35px;
-    border:0;
-    background:#2D3943;
-    border-radius:10px;
-    transition:0.7s
-}
-
-.terminal-btn:hover{
-    background:gray;
-}
-
-h2{
-    font-size:30px;
-    margin-bottom:5px;
-    margin-top:10px;
+.create_button a{
+    height:50px;
+    width: 100px;
+    display: flex;
+    justify-content: center;
+    background-color: green;
+    color:white;
+    text-align: center;
+    align-items: center;
+    border-radius: 10px;
 }

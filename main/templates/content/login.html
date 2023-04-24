@@ -1,44 +1,32 @@
 {% extends 'base/base.html' %}
+{% load static %}
 
 {% block extra_css%}
-    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-GLhlTQ8iRABdZLl6O3oVMWSktQOp6b7In1Zl3/Jr59b6EGGoI1aFkw7cmDA6j6gD" crossorigin="anonymous">
-    <link rel="stylesheet" href="/static/css/login.css">
-    <link href='https://fonts.googleapis.com/css?family=Poppins' rel='stylesheet'>
-    <link href='https://fonts.googleapis.com/css?family=Lilita One' rel='stylesheet'>
+<link href='{% static "css/login.css" %}' rel="stylesheet">
 {% endblock %}
 
+
 {% block content%}
-    <div class="wrapper main">
-        <img src="/static/img/login/clouds.svg">
-        <div class="login" style="margin:0 auto;">
-            <img src="/static/img/login/psheno.svg" class="psheno">
-            <h2 class="poppins text-black" >Log In</h2>
-            <form action="" method="post" class="form">
-                <div class="form-element">
-                    <input type="email" class="input-form poppins" id="email" placeholder="Your email">
-                </div>
-                <div class="form-element">
-                    <input type="password" class="input-form poppins" id="password" minlength="2" maxlength="30" placeholder="Password">
-                </div>
-                <input type="submit" class="submit-button text-white poppins" value="Log In">
-            </form>
-            <a href="" class="forgot-password poppins">Forgot password?</a>
-            <div style="display:flex; flex-direction:row; justify-content:space-around; margin-top:15px;">
-                <span class="line" style="margin-left:25px;"></span><span style="font-style: normal;font-weight: 500;font-size: 14px;line-height: 21px;text-align: center;letter-spacing: 0.1px;color: #969AB8;" class="poppins">or</span><span class="line" style="margin-right:25px;"></span>
-            </div>
-            <div class="society">
-                <button class="society-login">
-                    <img src="/static/img/login/google.svg" width="27" height="25" style="align-items: start;"><span class="poppins" style="text-align:center; font-style: normal;font-weight: 600;font-size: 14px;line-height: 21px;letter-spacing: 0.1px;color: #171725; padding:15px;">Google</span>
-                </button>
-                <button class="society-login">
-                    <img src="/static/img/login/facebook.svg" width="27" height="25" style="align-items: start;"><span class="poppins" style="text-align:center; font-style: normal;font-weight: 600;font-size: 14px;line-height: 21px;letter-spacing: 0.1px;color: #171725;  padding:11px;">Facebook</span>
-                </button>
-            </div>
-            <img src="/static/img/login/pig.svg" class="pig">
-        </div>
+<div class="flex-container">
+<div>
+    <img class="pig" height="200" width="auto" src='{% static "img/auth/pig.svg" %}'>
+    <img class="wheat" height="250" width="auto" src='{% static "img/auth/wheat.svg" %}'>
+</div>
+<div class="content">
+    <div class="form">
+        <form action="" method="post">
+            <h3 class="poppins">Log In</h3>
+            <div class="form-item">
+                <img class="icon" src='{% static "img/auth/user_icon.svg" %}' >
+                <input type="text" placeholder="Login">
+            </div><br>
+            <div class="form-item">
+                <img class="icon" src='{% static "img/auth/key.svg" %}' >
+                <input type="password" placeholder="Password">
+            </div><br>
+            <input type="submit" value="Log In"><br>
+        </form>
     </div>
-{% endblock %}
-{% block extra_js %}
-    <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.11.6/dist/umd/popper.min.js" integrity="sha384-oBqDVmMz9ATKxIep9tiCxS/Z9fNfEXiDAYTujMAeBAsjFuCZSmKbSSUnQlmh/jp3" crossorigin="anonymous"></script>
-    <script src="https://code.jquery.com/jquery-3.6.4.js" integrity="sha256-a9jBBRygX1Bh5lt8GZjXDzyOB+bWve9EiO7tROUtj/E=" crossorigin="anonymous"></script>
+    </div>
+</div>
 {% endblock %}

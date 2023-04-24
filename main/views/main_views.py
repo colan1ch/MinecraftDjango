@@ -13,4 +13,5 @@ def error404_page(request):
     return render(request, "error404.html", context)
 
 
-
+def create_server_page(request):
+    return render(request, "create_server.html")
