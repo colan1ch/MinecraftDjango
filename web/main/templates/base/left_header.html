@@ -1,0 +1,25 @@
+{% load static %}
+<header class="poppins">
+    <a href="/"><div class="logo">
+        <img src = '{% static "img/base/logo.png" %}' height='45px' width='auto' alt="logo"/>
+        <p>MineCloud</p>
+    </div></a>
+    <nav>
+        <a href="#"><div class="nav-item">
+            <img height="25px" width="25px" src='{% static "img/console/server.svg"%}'>
+            <h2>Server</h2>
+        </div></a>
+        <a href="#"><div class="nav-item">
+            <img height="25px" width="25px" src='{% static "img/console/options.svg"%}'>
+            <h2>Options</h2>
+        </div></a>
+        <a href="#"><div class="nav-item">
+            <img height="25px" width="25px" src='{% static "img/console/terminal.svg"%}'>
+            <h2>Console</h2>
+        </div></a>
+        <a href="#"><div class="nav-item">
+            <img height="25px" width="25px" src='{% static "img/console/world.svg" %}'>
+            <h2>World</h2>
+        </div></a>
+    </nav>
+</header>

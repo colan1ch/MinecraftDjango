@@ -1,0 +1,36 @@
+{% extends 'base/control_panel_base.html' %}
+{% load static %}
+
+{% block extra_css%}
+<link href='{% static "css/console.css" %}' rel="stylesheet">
+{% endblock %}
+
+
+{% block content%}
+<div class="console-img">
+    <div class="console-text">
+        <!-- сюда писать текст -->
+    </div>
+</div>
+<div class="bottom-panel">
+    <button>Start</button>
+    <button>Stop</button>
+    <button>Restart</button>
+</div>
+{% endblock %}
+
+{% block extra_js %}
+<script>
+    let ws_log = new WebSocket("ws://{{IP_ADDR}}:{{PORT}}/ws/log/{{server.docker_id}}")
+    ws_log.onmessage = function(event){
+        let log_data = event.data;
+        let objDiv = document.querySelector('.console-text');
+        objDiv.innerHTML += log_data;
+        scroll_to_bottom();
+    }
+    function scroll_to_bottom() {
+        let objDiv = document.querySelector('.console-text');
+        objDiv.scrollTop = objDiv.scrollHeight;
+    }
+</script>
+{% endblock %}
