@@ -33,36 +33,38 @@ main{
 }
 
 .slider:before {
-  position: absolute;
-  content: "";
-  height: 30px;
-  width: 30px;
-  left: 0;
-  bottom: 0;
-  background-color: white;
-  -webkit-transition: .4s;
-  transition: .4s;
-  border-radius: 0%;
-}
-.slider:before {
-    content: "\274C"; /* крестик */
-    font-size: 25px;
-    background-color: red;
+    position: absolute;
+    content: "";
+    height: 30px;
+    width: 30px;
+    left: 0;
+    bottom: 0;
+    background-color: white;
+    -webkit-transition: .4s;
+    transition: .4s;
+    border-radius: 0%;
     text-align: center;
   }
   
-input:checked + .slider:before {
-    content: "\2713"; /* галочка */
-    font-size: 25px;
-    background-color: green;
-    text-align: center;
+  .slider:before {
+      content: "✕"; /* крестик */
+      font-size: 30px;
+      background-color: red;
+      line-height: 30px; 
   }
-
-input:checked + .slider:before {
-  -webkit-transform: translateX(30px);
-  -ms-transform: translateX(30px);
-  transform: translateX(30px);
-}
+    
+  input:checked + .slider:before {
+      content: "\2713";
+      font-size: 30px;
+      background-color: green;
+      line-height: 30px;
+    }
+  
+  input:checked + .slider:before {
+    -webkit-transform: translateX(30px);
+    -ms-transform: translateX(30px);
+    transform: translateX(30px);
+  } 
 .row{
     display: flex;
     justify-content: center;
