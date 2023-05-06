@@ -10,6 +10,19 @@
 {% block content%}
 <div class="poppins settings">
     <h1>Server settings</h1>
+    <form action="" method="post" novalidate>
+        <!-- Bug fix -->
+        <input type="hidden" name="white_list" id="id_white_list" value="false">
+        <input type="hidden" name="online_mode" id="id_online_mode" value="false">
+        <input type="hidden" name="pvp" id="id_pvp" checked="" value="false">
+        <input type="hidden" name="allow_flight" id="id_allow_flight" checked="" value="false">
+        <input type="hidden" name="spawn_animals" id="id_spawn_animals" checked="" value="false">
+        <input type="hidden" name="spawn_monsters" id="id_spawn_monsters" checked="" value="false">
+        <input type="hidden" name="spawn_npcs" id="id_spawn_npcs" checked="" value="false">
+        <input type="hidden" name="allow_nether" id="id_allow_nether" checked="" value="false">
+        <input type="hidden" name="enable_command_block" id="id_enable_command_block" checked="" value="false">
+        <!-- Bug fix -->
+    {% csrf_token %}
     <div class="column">
         <div class="row">
             <div class="form-item">
@@ -98,6 +111,18 @@
                 </label>
             </div>
         </div>
-    </div>  
+    </div>
+    <input type="submit" value="Save">
+
+    </form>  
 </div>
+{% endblock %}
+
+{% block extra_js %}
+<script>
+    let checkboxes = document.querySelectorAll('input[type="checkbox"]');
+    for (var i = 0; i < checkboxes.length; i++) {
+        checkboxes[i].value = true;
+    }
+</script>
 {% endblock %}

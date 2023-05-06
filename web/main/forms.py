@@ -26,20 +26,20 @@ class SetServerSettingsForm(forms.Form):
     difficulty = forms.ChoiceField(
         label='difficulty', choices=CHOICES_DIFFICULTY, initial='normal')
     white_list = forms.BooleanField(
-        label='white_list', initial=False)
+        label='white_list', initial=False, required=False)
     online_mode = forms.BooleanField(
-        label='online_mode', initial=False)
+        label='online_mode', initial=False, required=False)
     pvp = forms.BooleanField(
-        label='pvp', initial=True)
+        label='pvp', initial=True, required=False)
     allow_flight = forms.BooleanField(
-        label='allow_flight', initial=True)
+        label='allow_flight', initial=True, required=False)
     spawn_animals = forms.BooleanField(
-        label='spawn_animals', initial=True)
+        label='spawn_animals', initial=True, required=False)
     spawn_monsters = forms.BooleanField(
-        label='spawn_monsters', initial=True)
+        label='spawn_monsters', initial=True, required=False)
     spawn_npcs = forms.BooleanField(
-        label='spawn_npcs', initial=True)
+        label='spawn_npcs', initial=True, required=False)
     allow_nether = forms.BooleanField(
-        label='allow_nether', initial=True)
+        label='allow_nether', initial=True, required=False)
     enable_command_block = forms.BooleanField(
-        label='command_block', initial=True)
+        label='command_block', initial=True, required=False)
