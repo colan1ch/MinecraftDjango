@@ -1,0 +1,49 @@
+header{
+    position: fixed;
+    height: 100vh;
+    width: 200px;
+    background-color: #2d3943;
+}
+header nav{
+    color: white;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    margin-top: 40px;
+}
+.nav-item{
+    display: flex;
+    height: 60px;
+    align-items: center;
+}
+.logo p{
+    margin-top: 15px;
+    margin-left: 10px;
+    color: white;
+    font-size: 25px;
+    font-family: 'Lilita One', cursive;
+}
+.logo img{
+    margin-left: 5px;
+}
+a{
+    text-decoration: none;
+    color:white;
+}
+header .logo{
+    display: flex;
+}
+.nav-item img{
+    margin-top:2px;
+    margin-left: 10px;
+    margin-right: 10px;
+}
+.nav-item:hover{
+    background-color: #60809b;
+}
+.selected{
+    background-color: #60809b;
+}
+main{
+    margin-left: 200px;
+}

@@ -1,0 +1,128 @@
+{% extends 'base/control_panel_base.html' %}
+{% load static %}
+
+{% block extra_css%}
+<link href='{% static "css/console.css" %}' rel="stylesheet">
+<link href='{% static "css/settings.css" %}' rel="stylesheet">
+{% endblock %}
+
+
+{% block content%}
+<div class="poppins settings">
+    <h1>Server settings</h1>
+    <form action="" method="post" novalidate>
+        <!-- Bug fix -->
+        <input type="hidden" name="white_list" id="id_white_list" value="false">
+        <input type="hidden" name="online_mode" id="id_online_mode" value="false">
+        <input type="hidden" name="pvp" id="id_pvp" checked="" value="false">
+        <input type="hidden" name="allow_flight" id="id_allow_flight" checked="" value="false">
+        <input type="hidden" name="spawn_animals" id="id_spawn_animals" checked="" value="false">
+        <input type="hidden" name="spawn_monsters" id="id_spawn_monsters" checked="" value="false">
+        <input type="hidden" name="spawn_npcs" id="id_spawn_npcs" checked="" value="false">
+        <input type="hidden" name="allow_nether" id="id_allow_nether" checked="" value="false">
+        <input type="hidden" name="enable_command_block" id="id_enable_command_block" checked="" value="false">
+        <!-- Bug fix -->
+    {% csrf_token %}
+    <div class="column">
+        <div class="row">
+            <div class="form-item">
+                <p>{{form.max_players.label}}</p>
+                {{form.max_players}}
+            </div>
+            <div class="form-item">
+                <p>{{form.gamemode.label}}</p>
+                {{form.gamemode}}
+            </div>
+        </div>
+        <div class="row">
+            <div class="form-item">
+                <p>{{form.difficulty.label}}</p>
+                {{form.difficulty}}
+            </div>
+            <div class="form-item">
+                <p>{{form.white_list.label}}</p>
+                <label class="toggle-switch">
+                    {{form.white_list}}
+                    <span class="slider"></span>
+                </label>
+            </div>
+        </div>
+        <div class="row">
+            <div class="form-item">
+                <p>{{form.online_mode.label}}</p>
+                <label class="toggle-switch">
+                    {{form.online_mode}}
+                    <span class="slider"></span>
+                </label>
+            </div>
+            <div class="form-item">
+                <p>{{form.pvp.label}}</p>
+                <label class="toggle-switch">
+                    {{form.pvp}}
+                    <span class="slider"></span>
+                </label>
+            </div>
+        </div>
+        <div class="row">
+            <div class="form-item">
+                <p>{{form.allow_flight.label}}</p>
+                <label class="toggle-switch">
+                    {{form.allow_flight}}
+                    <span class="slider"></span>
+                </label>
+            </div>
+            <div class="form-item">
+                <p>{{form.spawn_animals.label}}</p>
+                <label class="toggle-switch">
+                    {{form.spawn_animals}}
+                    <span class="slider"></span>
+                </label>
+            </div>
+        </div>
+        <div class="row">
+            <div class="form-item">
+                <p>{{form.spawn_monsters.label}}</p>
+                <label class="toggle-switch">
+                    {{form.spawn_monsters}}
+                    <span class="slider"></span>
+                </label>
+            </div>
+            <div class="form-item">
+                <p>{{form.spawn_npcs.label}}</p>
+                <label class="toggle-switch">
+                    {{form.spawn_npcs}}
+                    <span class="slider"></span>
+                </label>
+            </div>
+        </div>
+        <div class="row">
+            <div class="form-item">
+                <p>{{form.allow_nether.label}}</p>
+                <label class="toggle-switch">
+                    {{form.allow_nether}}
+                    <span class="slider"></span>
+                </label>
+            </div>
+            <div class="form-item">
+                <p>{{form.enable_command_block.label}}</p>
+                <label class="toggle-switch">
+                    {{form.enable_command_block}}
+                    <span class="slider"></span>
+                </label>
+            </div>
+        </div>
+    </div>
+    <input type="submit" value="Save">
+
+    </form>  
+</div>
+{% endblock %}
+
+{% block extra_js %}
+<script>
+    let checkboxes = document.querySelectorAll('input[type="checkbox"]');
+    for (var i = 0; i < checkboxes.length; i++) {
+        checkboxes[i].value = true;
+    }
+</script>
+{% endblock %}
