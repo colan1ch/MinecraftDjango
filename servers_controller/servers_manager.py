@@ -4,7 +4,7 @@ import docker
 
 client = docker.DockerClient(base_url='unix://var/run/docker.sock')
 # это папка на хосте НЕ НА ДОКЕРЕ!
-BASE_DIR = '/home/prom/final_project/mine_server/'
+BASE_DIR = '/home/prom/minecraft-django/servers_controller/'
 
 
 def create_server(server_id, params=None):
@@ -39,7 +39,7 @@ def create_server(server_id, params=None):
                                          detach=True,
                                          environment=my_env,
                                          mem_limit='1g')
-    os.makedirs(f'servers_data/minecraft_server{server_id}/logs', 0o755)
+    os.makedirs(f'servers_data/minecraft_server{server_id}/logs', 0o755, exist_ok=True)
     with open(f'servers_data/minecraft_server{server_id}/logs/latest.log', 'w+', encoding='utf-8'):
         pass
     return container.id
@@ -94,20 +94,18 @@ def get_last_server_id():
 
 
 def run_command_on_server(server_id, command):
+    # TODO: FIX RCE
     container = get_container_by_id(server_id)
-    return container.exec_run('mc-send-to-console ' + command)
+    return container.exec_run(['mc-send-to-console', command])
 
 
-def recreate_server(server_id, params):
+def edit_server(server_id, params):
     container = get_container_by_id(server_id)
     old_id = int(container.name[16:])
     config = container.attrs['Config']['Env']
-    print(config)
     old_version = config[3][8:]
-    print(old_version)
-    print(params)
     container.remove()
-    if old_version != params['VERSION']:
-        shutil.rmtree(f'servers_data/minecraft_server{old_id}/world/')
+    if old_version != params['version']:
+        shutil.rmtree(f'servers_data/minecraft_server{old_id}/world/', ignore_errors=True)
     new_container_id = create_server(old_id, params)
     return new_container_id

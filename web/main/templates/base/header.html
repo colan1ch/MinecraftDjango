@@ -22,18 +22,18 @@
         {% endif %}
         {% if user.is_authenticated %}
         <div class="profile poppins">
-            <a href="#"><div class="servers">
+            <a href="{% url 'servers' %}"><div class="servers">
                 <img src='{% static "img/base/server.svg"%}'>
                 <p>Your servers</p>
             </div></a>
-            <a href="#"><div class="settings">
+            <a href="{% url 'profile' %}"><div class="settings">
                 <img src='{% static "img/base/user_settings.svg"%}'>
                 <p>Settings</p>
             </div></a>
             <div class="user">
                 <div style="margin-right: 5px; margin-top: 2px;">
                     <p>Username</p>
-                    <a style='display: flex; justify-content: end;margin-right: 0px;'href="#">
+                    <a style='display: flex; justify-content: end;margin-right: 0px;'href="/logout">
                         <img style='margin-top: -7px;' src='{% static "img/base/logout.svg"%}'>
                         <p class="logout">Logout</p>
                     </a>

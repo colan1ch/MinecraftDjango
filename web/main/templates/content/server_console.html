@@ -13,9 +13,9 @@
     </div>
 </div>
 <div class="bottom-panel">
-    <button>Start</button>
-    <button>Stop</button>
-    <button>Restart</button>
+    <button onclick="start()">Start</button>
+    <button onclick="stop()">Stop</button>
+    <button onclick="restart()">Restart</button>
 </div>
 {% endblock %}
 
@@ -25,12 +25,45 @@
     ws_log.onmessage = function(event){
         let log_data = event.data;
         let objDiv = document.querySelector('.console-text');
-        objDiv.innerHTML += log_data;
+        objDiv.innerHTML = log_data;
         scroll_to_bottom();
     }
     function scroll_to_bottom() {
         let objDiv = document.querySelector('.console-text');
         objDiv.scrollTop = objDiv.scrollHeight;
+    }
+    function start() {
+        let r = new XMLHttpRequest()
+        r.open(method='GET','/api/start_server/{{server.id}}')
+        r.onload = function(){
+            ajax_data = JSON.parse(r.response)
+        }
+        r.onerror = function(){
+            alert('ERROR')
+        }
+        r.send()
+    }
+    function restart() {
+        let r = new XMLHttpRequest()
+        r.open(method='GET','/api/restart_server/{{server.id}}')
+        r.onload = function(){
+            ajax_data = JSON.parse(r.response)
+        }
+        r.onerror = function(){
+            alert('ERROR')
+        }
+        r.send()
+    }
+    function stop() {
+        let r = new XMLHttpRequest()
+        r.open(method='GET','/api/stop_server/{{server.id}}')
+        r.onload = function(){
+            ajax_data = JSON.parse(r.response)
+        }
+        r.onerror = function(){
+            alert('ERROR')
+        }
+        r.send()
     }
 </script>
 {% endblock %}

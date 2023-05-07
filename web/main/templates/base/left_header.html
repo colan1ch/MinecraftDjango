@@ -5,15 +5,15 @@
         <p>MineCloud</p>
     </div></a>
     <nav>
-        <a href="{% url 'console' server_id %}"><div class="nav-item">
+        <a href="{% url 'console' server.id %}"><div class="nav-item">
             <img height="25px" width="25px" src='{% static "img/console/server.svg"%}'>
             <h2>Server</h2>
         </div></a>
-        <a href="{% url 'settings' server_id %}"><div class="nav-item">
+        <a href="{% url 'settings' server.id %}"><div class="nav-item">
             <img height="25px" width="25px" src='{% static "img/console/options.svg"%}'>
             <h2>Settings</h2>
         </div></a>
-        <a href="{% url 'world' server_id %}"><div class="nav-item">
+        <a href="{% url 'world' server.id %}"><div class="nav-item">
             <img height="25px" width="25px" src='{% static "img/console/world.svg" %}'>
             <h2>World</h2>
         </div></a>

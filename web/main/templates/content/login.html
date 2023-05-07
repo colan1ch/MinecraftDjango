@@ -15,16 +15,18 @@
 <div class="content">
     <div class="form">
         <form action="" method="post">
+            {% csrf_token %}
             <h3 class="poppins">Log In</h3>
             <div class="form-item">
                 <img class="icon" src='{% static "img/auth/user_icon.svg" %}' >
-                <input type="text" placeholder="Login">
+                {{form.username}}
             </div><br>
             <div class="form-item">
                 <img class="icon" src='{% static "img/auth/key.svg" %}' >
-                <input type="password" placeholder="Password">
+                {{form.password}}
             </div><br>
             <input type="submit" value="Log In"><br>
+            {{ form.non_field_errors }}
         </form>
     </div>
     </div>

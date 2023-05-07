@@ -66,3 +66,8 @@ input[type="submit"]{
     top: 30px;
     right: 135px;
 }
+.errorlist{
+  list-style-type: none;
+  text-align: left;
+  color: red;
+}

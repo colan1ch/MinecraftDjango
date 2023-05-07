@@ -105,10 +105,39 @@ input[type='submit']{
     font-size: 18px;
     color: #fff;
 }
-
+.set_version{
+  color: white;
+  margin-top: 100px;
+}
+.set_version h1, .set_version h3, .set_version h2, .set_version p{
+  text-align: center;
+  font-weight: bold;
+}
+.set_version .column{
+  margin-top: 0px;
+  height: 450px;
+  justify-content: start;
+  margin-right: 100px;
+}
+.set_version button{
+  background-color: #1fd78d;
+  height: 50px;
+  width: 100px;
+  border: none;
+  font-size: 18px;
+  color: #fff;
+  margin: 10px;
+}
 @media (max-width: 950px) {
     .row{
         display: block;
         margin: 0 auto;
+    }
+    .set_version .column{
+      margin: 0 auto;
+    }
+    .set_version .column .row{
+      display: flex;
+      justify-content: center;
     }
   }

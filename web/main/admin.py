@@ -1,8 +1,8 @@
 from django.contrib import admin
-from main.models import Servers
+from main.models import Server
 
-class ServersAdmin(admin.ModelAdmin):
+class ServerAdmin(admin.ModelAdmin):
     pass
 
 
-admin.site.register(Servers, ServersAdmin)
+admin.site.register(Server, ServerAdmin)

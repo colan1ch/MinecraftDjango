@@ -1,10 +1,24 @@
 from django import forms
 from django.contrib.auth import get_user_model
 from django.contrib.auth.forms import UserCreationForm, AuthenticationForm
-from django.forms import ModelForm
 from .models import *
 
-
+CHOICES_VERSION = (
+    ('1.19.4', '1.19.4'),
+    ('1.18.2', '1.18.2'),
+    ('1.17.1', '1.17.1'),
+    ('1.16.5', '1.16.5'),
+    ('1.15.2', '1.15.2'),
+    ('1.14.4', '1.14.4'),
+    ('1.13.2', '1.13.2'),
+    ('1.12.2', '1.12.2'),
+    ('1.11.2', '1.11.2'),
+    ('1.10.2', '1.10.2'),
+    ('1.9.4', '1.9.4'),
+    ('1.8.9', '1.8.9'),
+    ('1.7.10', '1.7.10'),
+    ('1.6.4', '1.5.2'),
+)
 CHOICES_GAMEMODE = (
     ("creative", "creative"),
     ("survival", "survival"),
@@ -17,6 +31,17 @@ CHOICES_DIFFICULTY = (
     ("normal", "normal"),
     ("hard", "hard"),
 )
+CHOICES_PLAN = (
+    ('Free', 'Free'),
+    ('Budget', 'Budget'),
+    ('Boost', 'Boost'),
+)
+
+
+class CreateServerFrom(forms.Form):
+    name = forms.CharField(widget=forms.TextInput(attrs={'placeholder': 'Enter server name'}))
+    plan = forms.ChoiceField(
+        label='plan', choices=CHOICES_PLAN)
 
 
 class SetServerSettingsForm(forms.Form):
@@ -43,3 +68,29 @@ class SetServerSettingsForm(forms.Form):
         label='allow_nether', initial=True, required=False)
     enable_command_block = forms.BooleanField(
         label='command_block', initial=True, required=False)
+
+
+class RegisterUserForm(UserCreationForm):  # класс формы регистрации
+    username = forms.CharField(label="Login", widget=forms.TextInput(attrs={'placeholder': 'Enter your login'}))
+    email = forms.EmailField(label="Email", widget=forms.TextInput(attrs={'placeholder': 'Enter your email'}))
+    first_name = forms.CharField(label="Name", widget=forms.TextInput(attrs={'placeholder': 'Enter your name'}))
+    last_name = forms.CharField(label="Surname", widget=forms.TextInput(attrs={'placeholder': 'Enter your surname'}))
+    password1 = forms.CharField(widget=forms.PasswordInput(attrs={'placeholder': 'Enter your password'}),
+                                label="Password")
+    password2 = forms.CharField(widget=forms.PasswordInput(attrs={'placeholder': 'Repeat your password'}),
+                                label="Repeat password")
+
+    class Meta:
+        model = get_user_model()  # привязываем форму к модели
+        fields = ('username', 'email', 'first_name', 'last_name', 'password1', 'password2')  # указываем нужные нам поля
+
+
+class LoginUserForm(AuthenticationForm):
+    username = forms.CharField(label='Login', widget=forms.TextInput(attrs={'placeholder': 'Enter your login'}))
+    password = forms.CharField(label='Password',
+                               widget=forms.PasswordInput(attrs={'placeholder': 'Enter your password'}))
+
+
+class SetServerVersionForm(forms.Form):
+    version = forms.ChoiceField(
+        label='version', choices=CHOICES_VERSION)
