@@ -1,5 +1,11 @@
+from django.contrib.auth.models import AbstractUser
 from django.db import models
 from django.contrib.auth import get_user_model
+from main.forms_utils import user_directory_path
+
+
+class User(AbstractUser):
+    logo_image = models.ImageField(upload_to=user_directory_path, default='default.svg')
 
 
 class Server(models.Model):
@@ -8,7 +14,3 @@ class Server(models.Model):
     plan = models.CharField(max_length=10)
     settings = models.JSONField(default=None)
     docker_id = models.CharField(max_length=64)
-
-
-class UserSettings(models.Model):
-    user = models.ForeignKey(to=get_user_model(), on_delete=models.CASCADE)

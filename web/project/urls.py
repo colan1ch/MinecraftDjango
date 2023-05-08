@@ -1,18 +1,24 @@
+from django.conf.urls.static import static
 from django.urls import path, include
 from django.contrib import admin
 from main.views import main_views, profile_views, authorization_views, servers, control_panel_views, api
+from project import settings
 
 urlpatterns = [
     path('', main_views.index_page, name="home"),
-    path('profile/', profile_views.profile_page, name="profile"),
-    path('profile/<int:id>/', profile_views.profile_page, name="profile"),
-    path('edit_profile/', profile_views.editing_profile_page, name = "edit profile"),
-    path('registration/', authorization_views.RegisterUser.as_view(), name = "register"),
-    path('login/', authorization_views.LoginUser.as_view(), name = "login"),
-    path('error404/', main_views.error404_page, name = "Ошибка 404"),
+    path('error404/', main_views.error404_page, name="Ошибка 404"),
     path('admin/', admin.site.urls, name="Админ. панель"),
     path('servers/', servers.servers_page, name="servers"),
     path('create_server/', servers.create_server_page, name="create server"),
+
+    path('profile/', profile_views.profile_page, name="profile"),
+    path('profile/edit_username/', profile_views.change_username, name="edit username"),
+    path('profile/edit_password/', profile_views.change_password, name="edit password"),
+    path('profile/edit_email/', profile_views.change_email, name="edit email"),
+    path('profile/edit_logo/', profile_views.change_logo, name="edit logo"),
+
+    path('registration/', authorization_views.RegisterUser.as_view(), name="register"),
+    path('login/', authorization_views.LoginUser.as_view(), name="login"),
     path('logout/', authorization_views.logout_user, name='logout'),
 
     path('server/<int:server_id>/console', control_panel_views.console_page, name='console'),
@@ -26,4 +32,4 @@ urlpatterns = [
     path('api/edit_server/<int:server_id>', api.edit_server),
     path('api/run_command/<int:server_id>', api.run_command),
     path('api/edit_version/<int:server_id>', api.edit_version_server),
-]
+] + static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)

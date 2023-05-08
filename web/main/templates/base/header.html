@@ -32,14 +32,14 @@
             </div></a>
             <div class="user">
                 <div style="margin-right: 5px; margin-top: 2px;">
-                    <p>Username</p>
+                    <p>{{request.user.username}}</p>
                     <a style='display: flex; justify-content: end;margin-right: 0px;'href="/logout">
                         <img style='margin-top: -7px;' src='{% static "img/base/logout.svg"%}'>
                         <p class="logout">Logout</p>
                     </a>
                 </div>
                 <div>
-                <img height="50px" width="50px" src='{% static "img/base/user_logo.svg" %}'>
+                <img height="50px" width="50px" src='/media/{{request.user.logo_image}}'>
                 </div>
             </div>
         </div>
