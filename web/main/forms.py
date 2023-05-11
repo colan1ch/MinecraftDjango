@@ -38,7 +38,7 @@ class SetServerSettingsForm(forms.Form):
         label='command_block', initial=True, required=False)
 
 
-class RegisterUserForm(UserCreationForm):  # класс формы регистрации
+class RegisterUserForm(UserCreationForm):
     username = forms.CharField(label="Login", widget=forms.TextInput(attrs={'placeholder': 'Enter your login'}))
     email = forms.EmailField(label="Email", widget=forms.TextInput(attrs={'placeholder': 'Enter your email'}))
     first_name = forms.CharField(label="Name", widget=forms.TextInput(attrs={'placeholder': 'Enter your name'}))
@@ -49,7 +49,7 @@ class RegisterUserForm(UserCreationForm):  # класс формы регист�
                                 label="Repeat password")
 
     class Meta:
-        model = get_user_model()  # привязываем форму к модели
+        model = get_user_model()
         fields = ('username', 'email', 'first_name', 'last_name', 'password1', 'password2')  # указываем нужные нам поля
 
 

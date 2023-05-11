@@ -21,7 +21,7 @@
 
 {% block extra_js %}
 <script>
-    let ws_log = new WebSocket("ws://{{IP_ADDR}}:{{PORT}}/ws/log/{{server.docker_id}}")
+    let ws_log = new WebSocket("ws://{{SERVER_ADDR}}/ws/log/{{server.docker_id}}")
     ws_log.onmessage = function(event){
         let log_data = event.data;
         let objDiv = document.querySelector('.console-text');

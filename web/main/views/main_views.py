@@ -1,4 +1,4 @@
-from django.shortcuts import render, redirect
+from django.shortcuts import render
 
 
 def index_page(request):
@@ -9,4 +9,3 @@ def index_page(request):
 def error404_page(request):
     context = {}
     return render(request, "error404.html", context)
-

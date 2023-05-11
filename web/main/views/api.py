@@ -1,19 +1,17 @@
+import os
 from django.contrib.auth.decorators import login_required
 from django.shortcuts import redirect, get_object_or_404
 import requests
-import os
 from django.http import JsonResponse
 from django.core.exceptions import PermissionDenied
 from ..models import *
 from ..forms import *
 
-AUTH_KEY = os.environ.get('AUTH_KEY','fc390cc01bcbe4583154c8316e4f953f')
-SERVER_URL = os.environ.get('SERVER_URL')
-SERVER_PORT = os.environ.get('SERVER_PORT')
+AUTH_KEY = os.environ.get('AUTH_KEY', 'fc390cc01bcbe4583154c8316e4f953f')
+SERVER_IP = os.environ.get('SERVER_IP','localhost')
+SERVER_PORT = os.environ.get('SERVER_PORT', 5000)
 
-SERVER_ADDR = str(SERVER_URL)+':'+str(SERVER_PORT)
-SERVER_ADDR = 'localhost:5000'
-
+SERVER_ADDR = str(SERVER_IP) + ':' + str(SERVER_PORT)
 
 default_settings = {'version': '1.12.2',
                     'white_list': 'false',
@@ -36,9 +34,9 @@ def start_server(request, server_id):
     if server.user != request.user:
         raise PermissionDenied()
     docker_id = server.docker_id
-    r = requests.get(f'http://{SERVER_ADDR}/start_server/{docker_id}',
-                     params={'key': AUTH_KEY}, timeout=2)
-    return JsonResponse({'status': r.text})
+    response = requests.get(f'http://{SERVER_ADDR}/start_server/{docker_id}',
+                            params={'key': AUTH_KEY}, timeout=2)
+    return JsonResponse({'status': response.text})
 
 
 @login_required(login_url='/login/')
@@ -48,9 +46,9 @@ def restart_server(request, server_id):
         raise PermissionDenied()
     docker_id = server.docker_id
 
-    r = requests.get(f'http://{SERVER_ADDR}/restart_server/{docker_id}',
-                     params={'key': AUTH_KEY}, timeout=2)
-    return JsonResponse({'status': r.text})
+    response = requests.get(f'http://{SERVER_ADDR}/restart_server/{docker_id}',
+                            params={'key': AUTH_KEY}, timeout=2)
+    return JsonResponse({'status': response.text})
 
 
 @login_required(login_url='/login/')
@@ -60,9 +58,9 @@ def stop_server(request, server_id):
         raise PermissionDenied()
     docker_id = server.docker_id
 
-    r = requests.get(f'http://{SERVER_ADDR}/stop_server/{docker_id}',
-                     params={'key': AUTH_KEY}, timeout=2)
-    return JsonResponse({'status': r.text})
+    response = requests.get(f'http://{SERVER_ADDR}/stop_server/{docker_id}',
+                            params={'key': AUTH_KEY}, timeout=2)
+    return JsonResponse({'status': response.text})
 
 
 @login_required(login_url='/login/')
@@ -74,14 +72,13 @@ def create_server(request):
             settings = default_settings.copy()
             settings['key'] = AUTH_KEY
             settings['plan'] = params['plan']
-            r = requests.get(f'http://{SERVER_ADDR}/create_server/',
-                             params=settings, timeout=2)
-            print(r.text)
-            if r.status_code == 200:
+            response = requests.get(f'http://{SERVER_ADDR}/create_server/',
+                                    params=settings, timeout=2)
+            if response.status_code == 200:
                 settings.pop('key')
                 server = Server.objects.create(
                     name=params['name'], user=request.user,
-                    docker_id=r.text[1:-1], plan=params['plan'], settings=settings)
+                    docker_id=response.text[1:-1], plan=params['plan'], settings=settings)
                 server.save()
     return redirect('/servers/')
 
@@ -100,10 +97,10 @@ def edit_server(request, server_id):
             params['key'] = AUTH_KEY
             params['version'] = server.settings['version']
             settings['version'] = server.settings['version']
-            r = requests.get(f'http://{SERVER_ADDR}/edit_server/{server.docker_id}',
-                             params=params, timeout=2)
-            if r.status_code == 200:
-                server.docker_id = r.text[1:-1]
+            response = requests.get(f'http://{SERVER_ADDR}/edit_server/{server.docker_id}',
+                                    params=params, timeout=2)
+            if response.status_code == 200:
+                server.docker_id = response.text[1:-1]
                 server.settings = settings
                 server.save()
     return redirect(f'/server/{server.id}/settings')
@@ -122,12 +119,11 @@ def edit_version_server(request, server_id):
             settings = server.settings
             settings['key'] = AUTH_KEY
             settings['version'] = params['version']
-            print(params, settings)
-            r = requests.get(f'http://{SERVER_ADDR}/edit_server/{server.docker_id}',
+            response = requests.get(f'http://{SERVER_ADDR}/edit_server/{server.docker_id}',
                              params=settings, timeout=2)
             settings.pop('key')
-            if r.status_code == 200:
-                server.docker_id = r.text[1:-1]
+            if response.status_code == 200:
+                server.docker_id = response.text[1:-1]
                 server.settings = settings
                 server.save()
     return redirect(f'/server/{server.id}/settings')
@@ -139,7 +135,18 @@ def run_command(request, server_id):
     if server.user != request.user:
         raise PermissionDenied()
     docker_id = server.docker_id
-    r = requests.get(f'http://{SERVER_ADDR}/run_command/{docker_id}',
-                     params={'key': AUTH_KEY, 'command': request.GET['command']},
-                     timeout=2)
-    return JsonResponse({'status': r.text})
+    response = requests.get(f'http://{SERVER_ADDR}/run_command/{docker_id}',
+                            params={'key': AUTH_KEY, 'command': request.GET['command']},
+                            timeout=2)
+    return JsonResponse({'status': response.text})
+
+
+@login_required(login_url='/login/')
+def delete_world(request, server_id):
+    server = get_object_or_404(Server, id=server_id)
+    if server.user != request.user:
+        raise PermissionDenied()
+    docker_id = server.docker_id
+    response = requests.get(f'http://{SERVER_ADDR}/delete_world/{docker_id}',
+                            params={'key': AUTH_KEY}, timeout=2)
+    return JsonResponse({'status': response.text})

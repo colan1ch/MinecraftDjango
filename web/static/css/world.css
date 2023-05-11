@@ -29,8 +29,8 @@ main{
     text-align: center;
     font-weight: 600;
 }
-.upload{
-    background-color: #EB7B59;
+.delete{
+    background-color: red;
 }
 .download{
     background-color: #1fd78d;

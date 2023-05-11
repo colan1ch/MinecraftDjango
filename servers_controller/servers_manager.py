@@ -109,3 +109,8 @@ def edit_server(server_id, params):
         shutil.rmtree(f'servers_data/minecraft_server{old_id}/world/', ignore_errors=True)
     new_container_id = create_server(old_id, params)
     return new_container_id
+
+
+def delete_world_on_server(server_id):
+    server_name = get_container_name(server_id)
+    shutil.rmtree(f'servers_data/{server_name}/world/', ignore_errors=True)

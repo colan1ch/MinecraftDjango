@@ -1,7 +1,10 @@
 import asyncio
 import os
+import zipfile
+from io import BytesIO
 from threading import Thread
 from fastapi import FastAPI, WebSocket, HTTPException, status, Request
+from fastapi.responses import StreamingResponse
 import servers_manager
 
 app = FastAPI()
@@ -79,6 +82,13 @@ def edit_server(server_id, key, request: Request):
     return servers_manager.edit_server(server_id, params)
 
 
+@app.get('/delete_world/{server_id}')
+def delete_world(server_id, key):
+    check_key(key)
+    servers_manager.delete_world_on_server(server_id)
+    return 'Success'
+
+
 @app.websocket('/ws/log/{server_id}')
 async def websocket_endpoint(websocket: WebSocket, server_id):
     await websocket.accept()
@@ -99,8 +109,26 @@ async def all_log_reader(server_id):
                 f'{servers_manager.get_container_name(server_id)}/logs/latest.log'
     try:
         with open(file_path, encoding='utf-8') as file:
-            for line in file.readlines():
+            for line in file.readlines()[-100:]:
                 log_lines.append(f"<p>{line}</p>")
     except:
         pass
     return log_lines
+
+
+@app.get('/download/{server_id}')
+def download(server_id):
+    server_name = servers_manager.get_container_name(server_id)
+    zip_io = BytesIO()
+    path = f'servers_data/{server_name}/world/'
+    with zipfile.ZipFile(zip_io, mode='w', compression=zipfile.ZIP_DEFLATED) as world_zip:
+        for root, dirs, files in os.walk(path):
+            for file in files:
+                world_zip.write(os.path.join(root, file),
+                                os.path.relpath(os.path.join(root, file),
+                                                os.path.join(path, '..')))
+
+    response = StreamingResponse(iter([zip_io.getvalue()]), media_type="application/x-zip-compressed")
+    response.headers["Content-Disposition"] = "attachment; filename=world.zip"
+    response.headers["Content-Type"] = 'application/force-download'
+    return response
