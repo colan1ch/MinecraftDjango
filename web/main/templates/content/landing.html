@@ -1,0 +1,54 @@
+{% extends 'base/base.html' %}
+{% load static %}
+
+{% block extra_css%}
+<link href='{% static "css/landing.css" %}' rel="stylesheet">
+<link href='{% static "css/index.css" %}' rel="stylesheet">
+{% endblock %}
+
+{% block content%}
+<body>
+    <div class="background">
+        <div class="starter" style="height: 200px;">
+            <h1 class="poppins" style="text-align: center; opacity: 0.9;">Ищешь топовы майнкрафт хостинг?</h1>
+            <h3 class="poppins" style="text-align: center; opacity: 0.9;">Тогда ты по адресу!</h3>
+        </div>
+        <div class="all">
+            <input checked type="radio" name="respond" id="desktop">
+                <article id="slider">
+                        <input checked type="radio" name="slider" id="switch1">
+                        <input type="radio" name="slider" id="switch2">
+                        <input type="radio" name="slider" id="switch3">
+                        <input type="radio" name="slider" id="switch4">
+                        <input type="radio" name="slider" id="switch5">
+                    <div id="slides">
+                        <div id="overflow">
+                            <div class="image">
+                                <div class="rate">здесь описание 1</div>
+                                <div class="rate">здесь описание 2</div>
+                                <div class="rate">здесь описание 3</div>
+                            </div>
+                        </div>
+                    </div>
+                    <div id="controls">
+                        <label for="switch1"></label>
+                        <label for="switch2"></label>
+                        <label for="switch3"></label>
+                    </div>
+                    <div id="active">
+                        <label for="switch1"></label>
+                        <label for="switch2"></label>
+                        <label for="switch3"></label>
+                    </div>
+                </article>
+        </div>
+        <div class="info">
+            <----тут на вашу фантазию---->
+            <img src="">
+            <img src="">
+            <img src="">
+            <img src="">
+        </div>
+    </div>
+</body>
+{% endblock %}
