@@ -25,7 +25,11 @@ def settings_page(request, server_id):
     server = get_object_or_404(Server, id=server_id)
     if server.user != request.user:
         raise PermissionDenied()
-    context = {'form': SetServerSettingsForm(server.settings), 'server': server}
+    if 'CF_PAGE_URL' in server.settings:
+        server_type = f'modepack {server.settings["CF_PAGE_URL"]}'
+    else:
+        server_type = f'vanilla {server.settings["version"]}'
+    context = {'form': SetServerSettingsForm(server.settings), 'server': server, 'type': server_type}
     return render(request, "server_settings.html", context)
 
 

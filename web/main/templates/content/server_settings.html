@@ -116,42 +116,43 @@
     </form>
 </div>
 <div class="set_version poppins">
-    <h1>Select version</h1>
+    <h1>Select server type</h1>
+    <p>Selected type: <span id="type">{{type}}</span></p>
+    <p>*World will be delete</p>
     <div class="row">
         <div class="column">
             <h2>Vanilla</h2>
-            <p>Selected version: <span id="selected_version">{{server.settings.version}}</span></p>
-            <p>*World will be delete</p>
-            <form action="/api">
             <div class="row">
-                <button type="button" onclick="change_version('1.19.4')">1.19.4</button>
-                <button type="button" onclick="change_version('1.18.2')">1.18.2</button>
-                <button type="button" onclick="change_version('1.17.1')">1.17.1</button>
+                <button class="set_version_btn" type="button" onclick="change_version('1.19.4')">1.19.4</button>
+                <button class="set_version_btn" type="button" onclick="change_version('1.18.2')">1.18.2</button>
+                <button class="set_version_btn" type="button" onclick="change_version('1.17.1')">1.17.1</button>
             </div>
             <div class="row">
-                <button type="button" onclick="change_version('1.16.5')">1.16.5</button>
-                <button type="button" onclick="change_version('1.15.2')">1.15.2</button>
-                <button type="button" onclick="change_version('1.14.4')">1.14.4</button>
+                <button class="set_version_btn" type="button" onclick="change_version('1.16.5')">1.16.5</button>
+                <button class="set_version_btn" type="button" onclick="change_version('1.15.2')">1.15.2</button>
+                <button class="set_version_btn" type="button" onclick="change_version('1.14.4')">1.14.4</button>
             </div>
             <div class="row">
-                <button type="button" onclick="change_version('1.13.2')">1.13.2</button>
-                <button type="button" onclick="change_version('1.12.2')">1.12.2</button>
-                <button type="button" onclick="change_version('1.11.2')">1.11.2</button>
+                <button class="set_version_btn" type="button" onclick="change_version('1.13.2')">1.13.2</button>
+                <button class="set_version_btn" type="button" onclick="change_version('1.12.2')">1.12.2</button>
+                <button class="set_version_btn" type="button" onclick="change_version('1.11.2')">1.11.2</button>
             </div>
             <div class="row">
-                <button type="button" onclick="change_version('1.10.2')">1.10.2</button>
-                <button type="button" onclick="change_version('1.9.4')">1.9.4</button>
-                <button type="button" onclick="change_version('1.8.9')">1.8.9</button>
+                <button class="set_version_btn" type="button" onclick="change_version('1.10.2')">1.10.2</button>
+                <button class="set_version_btn" type="button" onclick="change_version('1.9.4')">1.9.4</button>
+                <button class="set_version_btn" type="button" onclick="change_version('1.8.9')">1.8.9</button>
             </div>
             <div class="row">
-                <button type="button" onclick="change_version('1.7.10')">1.7.10</button>
-                <button type="button" onclick="change_version('1.6.4')">1.6.4</button>
-                <button type="button" onclick="change_version('1.5.2')">1.5.2</button>
+                <button class="set_version_btn" type="button" onclick="change_version('1.7.10')">1.7.10</button>
+                <button class="set_version_btn" type="button" onclick="change_version('1.6.4')">1.6.4</button>
+                <button class="set_version_btn" type="button" onclick="change_version('1.5.2')">1.5.2</button>
             </div>
-            </form>
         </div>
         <div class="column">
             <h2>Modepacks</h2>
+            <div class="row">
+                <button class='modpack_btn' type="button" onclick="set_modpack('sevtech-ages')">sevtech-ages (1.12.2)</button>
+            </div>
         </div>
     </div>
 </div>
@@ -166,11 +167,20 @@
     function change_version(version) {
         var http = new XMLHttpRequest();
         let csrf = document.querySelectorAll('input[name="csrfmiddlewaretoken"]')[0].value;
-        selected_version.innerHTML = version;
+        type.innerHTML = 'vanilla '+version;
         http.open("POST", "/api/edit_version/{{server.id}}", true);
         http.setRequestHeader("X-CSRFToken", "{{ csrf_token }}");
         http.setRequestHeader('Content-type', 'application/x-www-form-urlencoded')
         http.send("version="+version+"&csrfmiddlewaretoken="+csrf);
+    }
+    function set_modpack(modpack) {
+        var http = new XMLHttpRequest();
+        let csrf = document.querySelectorAll('input[name="csrfmiddlewaretoken"]')[0].value;
+        type.innerHTML = 'modepack '+modpack;
+        http.open("POST", "/api/set_modpack/{{server.id}}", true);
+        http.setRequestHeader("X-CSRFToken", "{{ csrf_token }}");
+        http.setRequestHeader('Content-type', 'application/x-www-form-urlencoded')
+        http.send("modpack="+modpack+"&csrfmiddlewaretoken="+csrf);
     }
 </script>
 {% endblock %}

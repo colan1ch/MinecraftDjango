@@ -119,10 +119,22 @@ input[type='submit']{
   justify-content: start;
   margin-right: 100px;
 }
-.set_version button{
+button{
+    cursor: pointer;
+}
+.set_version_btn{
   background-color: #1fd78d;
   height: 50px;
   width: 100px;
+  border: none;
+  font-size: 18px;
+  color: #fff;
+  margin: 10px;
+}
+.modpack_btn{
+  background-color: #1fd78d;
+  height: 50px;
+  width: 200px;
   border: none;
   font-size: 18px;
   color: #fff;

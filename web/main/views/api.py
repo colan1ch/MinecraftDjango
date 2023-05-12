@@ -8,7 +8,7 @@ from ..models import *
 from ..forms import *
 
 AUTH_KEY = os.environ.get('AUTH_KEY', 'fc390cc01bcbe4583154c8316e4f953f')
-SERVER_IP = os.environ.get('SERVER_IP','localhost')
+SERVER_IP = os.environ.get('SERVER_IP', 'localhost')
 SERVER_PORT = os.environ.get('SERVER_PORT', 5000)
 
 SERVER_ADDR = str(SERVER_IP) + ':' + str(SERVER_PORT)
@@ -119,8 +119,10 @@ def edit_version_server(request, server_id):
             settings = server.settings
             settings['key'] = AUTH_KEY
             settings['version'] = params['version']
+            if 'CF_PAGE_URL' in settings:
+                settings.pop('CF_PAGE_URL')
             response = requests.get(f'http://{SERVER_ADDR}/edit_server/{server.docker_id}',
-                             params=settings, timeout=2)
+                                    params=settings, timeout=2)
             settings.pop('key')
             if response.status_code == 200:
                 server.docker_id = response.text[1:-1]
@@ -150,3 +152,27 @@ def delete_world(request, server_id):
     response = requests.get(f'http://{SERVER_ADDR}/delete_world/{docker_id}',
                             params={'key': AUTH_KEY}, timeout=2)
     return JsonResponse({'status': response.text})
+
+
+@login_required(login_url='/login/')
+def set_modpack(request, server_id):
+    if request.method == 'POST':
+        server = get_object_or_404(Server, id=server_id)
+        if server.user != request.user:
+            raise PermissionDenied()
+        form = SetModPackForm(request.POST)
+        if form.is_valid():
+            params = request.POST.dict()
+            params.pop('csrfmiddlewaretoken')
+            settings = server.settings
+            settings['key'] = AUTH_KEY
+            settings['CF_PAGE_URL'] = params['modpack']
+            print(settings)
+            response = requests.get(f'http://{SERVER_ADDR}/create_modpack_server/{server.docker_id}',
+                                    params=settings, timeout=2)
+            settings.pop('key')
+            if response.status_code == 200:
+                server.docker_id = response.text[1:-1]
+                server.settings = settings
+                server.save()
+    return redirect(f'/server/{server.id}/settings')

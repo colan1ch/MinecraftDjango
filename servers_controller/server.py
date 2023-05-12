@@ -132,3 +132,10 @@ def download(server_id):
     response.headers["Content-Disposition"] = "attachment; filename=world.zip"
     response.headers["Content-Type"] = 'application/force-download'
     return response
+
+
+@app.get('/create_modpack_server/{server_id}')
+def create_modpack_server(server_id, key, request: Request):
+    check_key(key)
+    params = dict(request.query_params)
+    return servers_manager.create_modpack_server(server_id, params)

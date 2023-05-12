@@ -65,6 +65,11 @@ class SetServerVersionForm(forms.Form):
         label='version', choices=CHOICES_VERSION)
 
 
+class SetModPackForm(forms.Form):
+    modpack = forms.ChoiceField(
+        label='modpack', choices=CHOICES_MODPACK)
+
+
 class UserlogoChangeForm(ModelForm):
     class Meta:
         model = get_user_model()

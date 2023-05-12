@@ -33,4 +33,5 @@ urlpatterns = [
     path('api/run_command/<int:server_id>', api.run_command),
     path('api/edit_version/<int:server_id>', api.edit_version_server),
     path('api/delete_world/<int:server_id>', api.delete_world),
+    path('api/set_modpack/<int:server_id>', api.set_modpack),
 ] + static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)

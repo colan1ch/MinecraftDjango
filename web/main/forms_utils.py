@@ -15,6 +15,9 @@ CHOICES_VERSION = (
     ('1.6.4', '1.6.4'),
     ('1.5.2', '1.5.2'),
 )
+CHOICES_MODPACK = (
+    ('sevtech-ages', 'sevtech-ages'),
+)
 CHOICES_GAMEMODE = (
     ("creative", "creative"),
     ("survival", "survival"),
