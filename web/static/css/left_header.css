@@ -3,6 +3,9 @@ header{
     height: 100vh;
     width: 200px;
     background-color: #2d3943;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
 }
 header nav{
     color: white;
@@ -46,4 +49,29 @@ header .logo{
 }
 main{
     margin-left: 200px;
+}
+.user{
+    display: flex;
+    width: 195px;
+    justify-content: space-between;
+    padding-right: 5px;
+}
+.user p{
+    width: 100%;
+    text-align: end;
+}
+.user .text{
+     width: 100%;
+     margin-right: 5px;
+}
+.user .text a{
+     width: 100px;
+     margin-right: 5px;
+}
+.logout{
+    text-align: end;
+    color: #A4A4A4;
+    margin-top: -5px;
+    font-size: 14px;
+    width: 50px;
 }

@@ -86,3 +86,15 @@ class UsernameChangeForm(ModelForm):
     class Meta:
         model = get_user_model()
         fields = ['username']
+
+
+class BudgetServerPaymentForm(forms.Form):
+    one_day_cost = forms.IntegerField(initial=5, disabled=True)
+    days = forms.IntegerField(initial=30)
+    total = forms.IntegerField()
+
+
+class BoostServerPaymentForm(forms.Form):
+    one_day_cost = forms.IntegerField(initial=10, disabled=True)
+    days = forms.IntegerField(initial=30)
+    total = forms.IntegerField()

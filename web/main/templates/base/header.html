@@ -33,6 +33,7 @@
             <div class="user">
                 <div style="margin-right: 5px; margin-top: 2px;">
                     <p>{{request.user.username}}</p>
+                    <p class="logout">{{request.user.money}} ₽</p>
                     <a style='display: flex; justify-content: end;margin-right: 0px;'href="/logout">
                         <img style='margin-top: -7px;' src='{% static "img/base/logout.svg"%}'>
                         <p class="logout">Logout</p>

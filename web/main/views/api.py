@@ -31,7 +31,7 @@ default_settings = {'version': '1.12.2',
 @login_required(login_url='/login/')
 def start_server(request, server_id):
     server = get_object_or_404(Server, id=server_id)
-    if server.user != request.user:
+    if server.user != request.user or not server.paid:
         raise PermissionDenied()
     docker_id = server.docker_id
     response = requests.get(f'http://{SERVER_ADDR}/start_server/{docker_id}',
@@ -42,7 +42,7 @@ def start_server(request, server_id):
 @login_required(login_url='/login/')
 def restart_server(request, server_id):
     server = get_object_or_404(Server, id=server_id)
-    if server.user != request.user:
+    if server.user != request.user or not server.paid:
         raise PermissionDenied()
     docker_id = server.docker_id
 
@@ -79,6 +79,8 @@ def create_server(request):
                 server = Server.objects.create(
                     name=params['name'], user=request.user,
                     docker_id=response.text[1:-1], plan=params['plan'], settings=settings)
+                if server.plan == 'free':
+                    server.paid = True
                 server.save()
     return redirect('/servers/')
 

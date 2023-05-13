@@ -10,7 +10,6 @@ DEBUG = True
 
 ALLOWED_HOSTS = ['*']
 
-
 # Application definition
 
 INSTALLED_APPS = [
@@ -56,7 +55,6 @@ TEMPLATES = [
 
 WSGI_APPLICATION = 'project.wsgi.application'
 
-
 # Database
 # https://docs.djangoproject.com/en/4.1/ref/settings/#databases
 
@@ -66,7 +64,6 @@ DATABASES = {
         'NAME': BASE_DIR / 'db.sqlite3',
     }
 }
-
 
 # Password validation
 # https://docs.djangoproject.com/en/4.1/ref/settings/#auth-password-validators
@@ -86,7 +83,6 @@ AUTH_PASSWORD_VALIDATORS = [
     },
 ]
 
-
 # Internationalization
 # https://docs.djangoproject.com/en/4.1/topics/i18n/
 
@@ -97,7 +93,6 @@ TIME_ZONE = 'UTC'
 USE_I18N = True
 
 USE_TZ = True
-
 
 # Static files (CSS, JavaScript, Images)
 # https://docs.djangoproject.com/en/4.1/howto/static-files/
@@ -113,3 +108,9 @@ MEDIA_URL = '/media/'
 
 DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
 AUTH_USER_MODEL = 'main.User'
+
+# yoomoney
+TOKEN = "4100117948842629.F5522BA0259C8697510A2C935F3891AF0EC99E75CBDAE69773B643CE7FB89998E132A45667A444B1C15E1C3AF8CDB506907A4D702ACF27204C6A86575BFB6D053D6128E64C19BDD4317E0BB948AB5BF89FD3466C8352429AB7681A3FBD4C3AA2359851DB74A2951388D106D66507BE9080BA584A7D0860F2CF3EFE80EB878CF1"
+#YOOMONEY_SECRET_KEY = "8ZLl99Io/69TcsUwrMaXRyVm"
+YOOMONEY_SECRET_KEY = "0x+5anM76et0BGkGtxqjz69W"
+ACCOUNT_ID = 4100117948842629

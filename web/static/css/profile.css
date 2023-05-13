@@ -98,3 +98,15 @@ ul {
 .error{
     color: red;
 }
+.payment{
+    margin-left: -7px;
+    padding: 0px;
+    max-width: 350px;
+    background-color: #2D3943;
+    color: white;
+    text-align: start;
+}
+input[type='number']{
+    height: 15px;
+    width: 100px;
+}
