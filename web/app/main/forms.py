@@ -7,7 +7,7 @@ from main.forms_utils import *
 
 
 class CreateServerFrom(forms.Form):
-    name = forms.CharField(widget=forms.TextInput(attrs={'placeholder': 'Enter server name'}))
+    name = forms.CharField(widget=forms.TextInput(attrs={'placeholder': 'Enter server name'}), max_length=15)
     plan = forms.ChoiceField(
         label='plan', choices=CHOICES_PLAN)
 

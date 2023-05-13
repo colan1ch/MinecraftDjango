@@ -34,8 +34,10 @@ def start_server(request, server_id):
     if server.user != request.user or not server.paid:
         raise PermissionDenied
     docker_id = server.docker_id
+    server.status = 'start'
     response = requests.get(f'http://{SERVER_ADDR}/start_server/{docker_id}',
                             params={'key': AUTH_KEY}, timeout=2)
+    server.save()
     return JsonResponse({'status': response.text})
 
 
@@ -45,9 +47,10 @@ def restart_server(request, server_id):
     if server.user != request.user or not server.paid:
         raise PermissionDenied
     docker_id = server.docker_id
-
+    server.status = 'start'
     response = requests.get(f'http://{SERVER_ADDR}/restart_server/{docker_id}',
                             params={'key': AUTH_KEY}, timeout=2)
+    server.save()
     return JsonResponse({'status': response.text})
 
 
@@ -57,9 +60,10 @@ def stop_server(request, server_id):
     if server.user != request.user:
         raise PermissionDenied()
     docker_id = server.docker_id
-
+    server.status = 'stop'
     response = requests.get(f'http://{SERVER_ADDR}/stop_server/{docker_id}',
                             params={'key': AUTH_KEY}, timeout=2)
+    server.save()
     return JsonResponse({'status': response.text})
 
 
@@ -178,3 +182,16 @@ def set_modpack(request, server_id):
                 server.settings = settings
                 server.save()
     return redirect(f'/server/{server.id}/settings')
+
+
+@login_required(login_url='/login/')
+def delete_server(request, server_id):
+    server = get_object_or_404(Server, id=server_id)
+    if server.user != request.user:
+        raise PermissionDenied()
+    docker_id = server.docker_id
+    response = requests.get(f'http://{SERVER_ADDR}/delete_server/{docker_id}',
+                            params={'key': AUTH_KEY},
+                            timeout=2)
+    server.delete()
+    return redirect(f'/servers')

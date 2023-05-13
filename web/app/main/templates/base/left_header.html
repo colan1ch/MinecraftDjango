@@ -24,6 +24,10 @@
             <h2>Payment</h2>
         </div></a>
         {% endif %}
+        <a href="{% url 'delete' server.id %}"><div class="nav-item">
+            <img height="25px" width="25px" src='{% static "img/console/delete.svg" %}'>
+            <h2>Delete</h2>
+        </div></a>
     </nav>
     </div>
     <div class="user">

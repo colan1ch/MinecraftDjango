@@ -20,7 +20,9 @@ def console_page(request, server_id):
     if server.user != request.user:
         raise PermissionDenied()
     context = {'server': server,
-               'SERVER_ADDR': SERVER_ADDR
+               'SERVER_ADDR': SERVER_ADDR,
+               'SERVER_IP': SERVER_IP,
+               'SERVER_PORT': server_id+25564,
                }
     return render(request, 'server_console.html', context)
 
@@ -90,3 +92,13 @@ def payment_page(request, server_id):
         else:
             messages.error(request, 'Error!')
         return redirect(f'/server/{server.id}/payment')
+
+
+@login_required(login_url='/login/')
+def delete_page(request, server_id):
+    server = get_object_or_404(Server, id=server_id)
+    if server.user != request.user:
+        raise PermissionDenied()
+    if request.method == 'GET':
+        context = {'server': server}
+        return render(request, "server_delete.html", context)

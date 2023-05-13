@@ -24,6 +24,7 @@ urlpatterns = [
     path('server/<int:server_id>/settings', control_panel_views.settings_page, name='settings'),
     path('server/<int:server_id>/world', control_panel_views.world_page, name='world'),
     path('server/<int:server_id>/payment', control_panel_views.payment_page, name='payment'),
+    path('server/<int:server_id>/delete', control_panel_views.delete_page, name='delete'),
     # api
     path('api/create_server', api.create_server),
     path('api/start_server/<int:server_id>', api.start_server),
@@ -34,6 +35,7 @@ urlpatterns = [
     path('api/edit_version/<int:server_id>', api.edit_version_server),
     path('api/delete_world/<int:server_id>', api.delete_world),
     path('api/set_modpack/<int:server_id>', api.set_modpack),
+    path('api/delete_server/<int:server_id>', api.delete_server),
     # payment
     path('api/payment/yoomoney', api_payment.yoomoney),
     path('api/payment/create_payment', api_payment.create_payment, name='create payment')

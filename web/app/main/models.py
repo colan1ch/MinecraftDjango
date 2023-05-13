@@ -10,7 +10,7 @@ class User(AbstractUser):
 
 
 class Server(models.Model):
-    name = models.CharField(max_length=20)
+    name = models.CharField(max_length=15)
     user = models.ForeignKey(to=get_user_model(), on_delete=models.CASCADE)
     plan = models.CharField(max_length=10)
     settings = models.JSONField(default=None)
