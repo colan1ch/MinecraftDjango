@@ -1,4 +1,6 @@
 import os
+
+from django.contrib.auth.decorators import login_required
 from django.core.exceptions import PermissionDenied
 from django.shortcuts import render
 from django.shortcuts import redirect, get_object_or_404
@@ -12,6 +14,7 @@ SERVER_PORT = os.environ.get('SERVER_PORT')
 SERVER_ADDR = str(SERVER_IP) + ':' + str(SERVER_PORT)
 
 
+@login_required(login_url='/login/')
 def console_page(request, server_id):
     server = get_object_or_404(Server, id=server_id)
     if server.user != request.user:
@@ -22,10 +25,13 @@ def console_page(request, server_id):
     return render(request, 'server_console.html', context)
 
 
+@login_required(login_url='/login/')
 def settings_page(request, server_id):
     server = get_object_or_404(Server, id=server_id)
     if server.user != request.user:
         raise PermissionDenied()
+    if server.status == 'start':
+        return redirect(f'/server/{server.id}/console')
     if 'CF_PAGE_URL' in server.settings:
         server_type = f'modepack {server.settings["CF_PAGE_URL"]}'
     else:
@@ -34,6 +40,7 @@ def settings_page(request, server_id):
     return render(request, "server_settings.html", context)
 
 
+@login_required(login_url='/login/')
 def world_page(request, server_id):
     server = get_object_or_404(Server, id=server_id)
     if server.user != request.user:
@@ -43,6 +50,7 @@ def world_page(request, server_id):
     return render(request, "server_world.html", context)
 
 
+@login_required(login_url='/login/')
 def payment_page(request, server_id):
     server = get_object_or_404(Server, id=server_id)
     if server.user != request.user:

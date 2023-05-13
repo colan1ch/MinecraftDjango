@@ -2,7 +2,7 @@
 <header>
     <nav>
         <a href="/"><div class="logo">
-            <img src = '{% static "img/base/logo.png" %}' height='80px' width='auto' alt="logo"/>
+            <img id="logo_img" src = '{% static "img/base/logo.png" %}' height='80px' width='auto' alt="logo"/>
             <p>MineCloud</p>
         </div></a>
         {% if user.is_authenticated %}

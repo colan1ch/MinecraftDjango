@@ -6,7 +6,6 @@ from project import settings
 
 urlpatterns = [
     path('', main_views.index_page, name="home"),
-    path('error404/', main_views.error404_page, name="Ошибка 404"),
     path('admin/', admin.site.urls, name="Админ. панель"),
     path('servers/', servers.servers_page, name="servers"),
     path('create_server/', servers.create_server_page, name="create server"),
@@ -39,3 +38,5 @@ urlpatterns = [
     path('api/payment/yoomoney', api_payment.yoomoney),
     path('api/payment/create_payment', api_payment.create_payment, name='create payment')
 ] + static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)
+
+handler404 = 'main.views.main_views.page_not_found_view'

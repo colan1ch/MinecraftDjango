@@ -7,7 +7,7 @@ BASE_DIR = Path(__file__).resolve().parent.parent
 SECRET_KEY = get_random_secret_key()
 
 # SECURITY WARNING: don't run with debug turned on in production!
-DEBUG = True
+DEBUG = False
 
 ALLOWED_HOSTS = ['*']
 
@@ -59,23 +59,23 @@ WSGI_APPLICATION = 'project.wsgi.application'
 # Database
 # https://docs.djangoproject.com/en/4.1/ref/settings/#databases
 
-#DATABASES = {
-#    'default': {
-#        'ENGINE': 'django.db.backends.sqlite3',
-#        'NAME': BASE_DIR / 'db.sqlite3',
-#    }
-#}
-
 DATABASES = {
     'default': {
-        'ENGINE': 'django.db.backends.postgresql',
-        'NAME': os.environ.get('POSTGRES_NAME'),
-        'USER': os.environ.get('POSTGRES_USER'),
-        'PASSWORD': os.environ.get('POSTGRES_PASSWORD'),
-        'HOST': 'db',
-        'PORT': 5432,
+        'ENGINE': 'django.db.backends.sqlite3',
+        'NAME': BASE_DIR / 'db.sqlite3',
     }
 }
+
+# DATABASES = {
+#    'default': {
+#        'ENGINE': 'django.db.backends.postgresql',
+#        'NAME': os.environ.get('POSTGRES_NAME'),
+#        'USER': os.environ.get('POSTGRES_USER'),
+#        'PASSWORD': os.environ.get('POSTGRES_PASSWORD'),
+#        'HOST': 'db',
+#        'PORT': 5432,
+#    }
+# }
 
 # Password validation
 # https://docs.djangoproject.com/en/4.1/ref/settings/#auth-password-validators
@@ -121,6 +121,6 @@ AUTH_USER_MODEL = 'main.User'
 
 # yoomoney
 TOKEN = "4100117948842629.F5522BA0259C8697510A2C935F3891AF0EC99E75CBDAE69773B643CE7FB89998E132A45667A444B1C15E1C3AF8CDB506907A4D702ACF27204C6A86575BFB6D053D6128E64C19BDD4317E0BB948AB5BF89FD3466C8352429AB7681A3FBD4C3AA2359851DB74A2951388D106D66507BE9080BA584A7D0860F2CF3EFE80EB878CF1"
-#YOOMONEY_SECRET_KEY = "8ZLl99Io/69TcsUwrMaXRyVm"
+# YOOMONEY_SECRET_KEY = "8ZLl99Io/69TcsUwrMaXRyVm"
 YOOMONEY_SECRET_KEY = "0x+5anM76et0BGkGtxqjz69W"
 ACCOUNT_ID = 4100117948842629

@@ -6,6 +6,5 @@ def index_page(request):
     return render(request, "index.html", context)
 
 
-def error404_page(request):
-    context = {}
-    return render(request, "error404.html", context)
+def page_not_found_view(request, exception):
+    return render(request, 'error404.html', status=404)

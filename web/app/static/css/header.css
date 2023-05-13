@@ -18,6 +18,7 @@ header nav{
     align-items: center;
     text-align: center;
     vertical-align: middle;
+    height: 60px;
 }
 header .logo img{
     margin-top: -20px;

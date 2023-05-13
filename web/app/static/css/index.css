@@ -7,12 +7,6 @@
 }
 
 
-nav {
-    background: rgba(41, 43, 44, 0);
-    display: flex;
-    justify-content: space-between;
-}
-
 .wrapper {
     height: 110vh;
     display: flex;
@@ -34,24 +28,9 @@ nav {
     font-size: 40px;
 }
 
-.logo {
-    margin-bottom: 35px;
-}
-
-
-.nav-link {
-    font-size: 30px;
-    padding: 15px;
-}
-
 .authorization {
     font-size: 30px;
     display: flex;
-
-}
-
-#navbarNav {
-    margin-left: 100px;
 
 }
 
@@ -83,16 +62,12 @@ nav {
 
 .bg-sec {
     background: #2D3943;
+    height: 600px;
 }
 
 .header-anim {
     background: rgba(80, 106, 128, 0.9);
 
-}
-
-.navbar {
-    transition: 1s;
-    height: 100px;
 }
 
 .article-title {
@@ -219,4 +194,30 @@ h3 {
 
 h4 {
     font-size: 35px;
+}
+
+header .menu{
+    margin-top: 0px;
+    position: relative;
+    right: 50px;
+}
+header .menu-auth{
+    margin-top: 0px;
+    position: relative;
+    left: 55px;
+}
+header .auth{
+    margin-top: 0px;
+}
+header .logo{
+    margin-top: 30px
+}
+header .logo img{
+    margin-top: -31px;
+}
+#logo_img{
+    margin-top: -31px;
+}
+header .logo p{
+    margin-top: 0px
 }
