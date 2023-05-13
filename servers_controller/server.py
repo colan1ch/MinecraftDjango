@@ -10,7 +10,7 @@ import servers_manager
 app = FastAPI()
 app.last_id = servers_manager.get_last_server_id() + 1
 
-AUTH_KEY = os.environ.get('AUTH_KEY', 'fc390cc01bcbe4583154c8316e4f953f')
+AUTH_KEY = os.environ.get('AUTH_KEY')
 # а это папка уже в докере
 BASE_DIR = os.getcwd()
 
