@@ -153,6 +153,7 @@ venv.bak/
 /site
 #servers_data
 servers_data
+data
 # mypy
 .mypy_cache/
 .dmypy.json
