@@ -62,7 +62,7 @@
                   {% csrf_token %}
                   <div>
                         <h3>Payment</h3>
-                        <input type="number" name="amount">₽<br>
+                        <input min="2" type="number" name="amount"> ₽<br>
                         <div class="btn-box">
                         <input style="width:100px; margin-left:-20px;" type="submit" class='profile-button' value="Pay">
                         </div>

@@ -83,7 +83,7 @@ input[type='text'], input[type='password'], input[type='email']{
 }
 input[type='submit']{
     height: 30px;
-    cursor: grab;
+    cursor: pointer;
 }
 .btn-box{
     display: flex;
