@@ -40,12 +40,13 @@
             send.click();
         }
     });
-    let ws_log = new WebSocket("ws://{{SERVER_ADDR}}/ws/log/{{server.docker_id}}")
+    let ws_log = new WebSocket("wss://api-minecloud.mshp.ml/ws/log/f2c77930d2943f898245669325977a86a99091037c07182ae1c946c39c774aa7")
     ws_log.onmessage = function(event){
         let log_data = event.data;
-        let objDiv = document.querySelector('.console-text');
-        objDiv.innerHTML = log_data;
-        scroll_to_bottom();
+        if (document.querySelector('.console-text').innerHTML != log_data) {
+            document.querySelector('.console-text').innerHTML = log_data;
+            scroll_to_bottom();
+        }
     }
     function scroll_to_bottom() {
         let objDiv = document.querySelector('.console-text');
