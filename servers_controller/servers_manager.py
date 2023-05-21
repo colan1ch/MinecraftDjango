@@ -4,7 +4,7 @@ import docker
 
 client = docker.DockerClient(base_url='unix://var/run/docker.sock')
 # это папка на хосте НЕ НА ДОКЕРЕ!
-BASE_DIR = '/home/prom/minecraft-django/servers_controller/'
+BASE_DIR = '/minecloud_ver_2/servers_controller'
 
 DEFAULT_MODPACK_URL = 'https://www.curseforge.com/minecraft/modpacks/'
 
@@ -16,7 +16,7 @@ def create_server(server_id, params=None):
         'EULA': True if 'eula' not in params else params['eula'],
         'ONLINE_MODE': params['online_mode'],
         'TYPE': 'VANILLA' if 'type' not in params else params['type'],
-        'VERSION': '1.12.2' if 'type' not in params else params['version'],
+        'VERSION': '1.12.2' if 'version' not in params else params['version'],
         'MODE': params['gamemode'],
         'MAX_PLAYERS': params['max_players'],
         'DIFFICULTY': params['difficulty'],
@@ -103,7 +103,6 @@ def get_last_server_id():
 
 
 def run_command_on_server(server_id, command):
-    # TODO: FIX RCE
     container = get_container_by_id(server_id)
     return container.exec_run(['mc-send-to-console', command])
 
@@ -116,6 +115,7 @@ def edit_server(server_id, params):
     container.remove()
     if old_version != params['version']:
         shutil.rmtree(f'servers_data/minecraft_server{old_id}/world/', ignore_errors=True)
+    dir_name = f'servers_data/minecraft_server{old_id}/'
     new_container_id = create_server(old_id, params)
     return new_container_id
 
@@ -129,7 +129,7 @@ def create_modpack_server(server_id, params):
     container = get_container_by_id(server_id)
     old_id = int(container.name[16:])
     container.remove()
-    shutil.rmtree(f'servers_data/minecraft_server{old_id}/world/', ignore_errors=True)
+    shutil.rmtree(f'servers_data/minecraft_server{old_id}/', ignore_errors=True)
 
     new_container_id = create_server(old_id, params)
     return new_container_id

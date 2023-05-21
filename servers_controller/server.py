@@ -62,10 +62,9 @@ def restart_server(server_id: str, key):
 @app.get('/delete_server/{server_id}')
 def delete_server(server_id: str, key):
     check_key(key)
-    response = servers_manager.delete_container_by_id(server_id)
-    if response == 0:
-        return 'Success'
-    return 'Error'
+    servers_manager.stop_container_by_id(server_id)
+    servers_manager.delete_container_by_id(server_id)
+    return 'Success'
 
 
 @app.get('/run_command/{server_id}')
@@ -96,7 +95,7 @@ async def websocket_endpoint(websocket: WebSocket, server_id):
         while True:
             logs = await all_log_reader(server_id)
             await websocket.send_text(logs)
-            await asyncio.sleep(0.1)  # без этого сервер падает (почему - это не ко мне)
+            await asyncio.sleep(0.5)  # без этого сервер падает (почему - это не ко мне)
     except Exception as exception:
         print(exception)
     finally:
